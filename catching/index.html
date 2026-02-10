@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cattito Cat Spawning Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+    /* CSS Variables for the dark theme */
+    :root {
+        --primary-color: #FFC064; /* Cat-orange/gold for accents */
+        --secondary-color: #6E593C; /* Earthy brown for borders/minor accents */
+        --background-dark: #2C3E50; /* Dark blue-gray background */
+        --content-background: #34495E; /* Darker blue-gray for the main content box */
+        --text-light: #ECF0F1;
+        --text-accent: #FFD97D; /* Lighter accent for highlights */
+        --code-background: #4A6572; /* Slightly lighter blue-gray for code */
+        --shadow-dark: rgba(0, 0, 0, 0.4);
+        --border-radius: 12px;
+    }
+
+    /* Base Typography and Container */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-dark);
+        color: var(--text-light);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: var(--content-background);
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 30px var(--shadow-dark);
+        border-top: 5px solid var(--primary-color);
+    }
+
+    /* Headers */
+    h1 {
+        font-family: 'Permanent Marker', cursive;
+        color: var(--primary-color);
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 5px;
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 10px;
+    }
+
+    h2, h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.4em;
+        color: var(--text-accent);
+        margin-top: 30px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        border-left: 4px solid var(--secondary-color);
+        font-weight: 600;
+    }
+    
+    /* General Text and Links */
+    p {
+        margin-bottom: 15px;
+        padding-left: 10px;
+    }
+    
+    strong {
+        color: var(--text-accent);
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: var(--text-accent);
+        text-decoration: underline;
+    }
+
+    ul, ol {
+        margin-top: 5px;
+        padding-left: 40px;
+    }
+    
+    ul li, ol li {
+        margin-bottom: 8px;
+    }
+
+    code {
+        background: #2C3E50; 
+        color: var(--text-accent);
+        padding: 4px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.95em;
+        display: inline-block; /* ensures padding/background is visible */
+        white-space: pre-wrap;
+    }
+    
+    /* Blockquote for the Restart Loop note */
+    blockquote {
+        margin: 20px 10px;
+        padding: 15px;
+        border-left: 5px solid var(--primary-color);
+        background-color: #3A536B;
+        border-radius: 4px;
+        font-style: italic;
+    }
+
+    /* Note block at the top */
+    .note-block {
+        background-color: #2C3E50;
+        padding: 15px;
+        border-radius: 8px;
+        border-left: 5px solid var(--text-accent);
+        margin: 20px 0;
+        font-size: 0.95em;
+        padding-left: 20px;
+    }
+    
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Cat Spawning and Catching</h1>
+
+<p class="note-block">NOTE: Command arguments in <strong>square brackets []</strong> are optional, in <strong>parentheses ()</strong> are required. Defaults are shown as **[argument=default]**.</p>
+
+<h2>Cat Spawning Overview</h2>
+<p>When a cat is caught, the bot **randomly** picks a new time according to the channel's timing settings, saves this target time to the database, and then creates a task which waits until that time hits to spawn a cat. When the time comes, the bot randomly picks a cat type (based on spawn chances) and sends it to the channel. If it fails due to missing permissions or deleted channel **it will unsetup the channel to prevent further errors.**</p>
+<p>It will choose the default if there is no custom spawn message.</p>
+
+<h3>Spawn and Caught Messages</h3>
+<p>The default spawn message looks like this:</p>
+<pre><code>{emoji} {type} cat has appeared! Type '"cat" to catch it! '</code></pre>
+<p>The default catch message looks like this for most cats:</p>
+<pre><code>{username} cought {emoji} {type} cat!!!!1!
+You now have {number} cats of dat type!!!
+this fella was cought in {time}!!!!</code></pre>
+<p>For special catch messages (by default), see <a href="https://wiki.minkos.lol/en/cat-types">Cat Types</a>.</p>
+
+<h3>Rains</h3>
+<p>Starting a rain pauses the normal spawn cycle and forcibly spawns cats randomly every **2.5-3 seconds**. The timer starts after each spawn; uncaught cats are lost. Number of cats per rain: <code>rain duration in seconds / 2.75</code>.</p>
+
+<h3>Restarts</h3>
+<p>Upon startup, Cattito spawns missed cats in past-due channels and runs a 5-minute loop to catch up. Active channels are tracked to prevent duplicate spawns. Uncaught cats despawn automatically. The bot logs events and adapts spawn frequency based on server activity.</p>
+<blockquote>This loop also handles saving cookies, updating status, posting stats to Top.gg, sending vote/quest/timed reminders, and database backups.</blockquote>
+
+<h3>Spawn-Related Commands</h3>
+<ul>
+<li><code>/setup</code> spawns the first cat to bootstrap the infinite loop.</li>
+<li><code>/forget</code> makes the bot forget any spawned cats and mark channel as deleted.</li>
+<li><code>/forcespawn</code> forces a cat to spawn, overriding tasks.</li>
+<li><code>/changetimings</code> only takes effect after next catch.</li>
+<li>Spawn and catch messages can be modified with <code>/changemessage</code>.</li>
+</ul>
+
+<h3>Spawning Troubleshooting</h3>
+<ol>
+<li>Make sure you ran <code>/setup</code> in the desired channel.</li>
+<li>Try sending "cat". There may be a cat in the channel even if no spawn message appears.</li>
+<li>Use <code>/forcespawn</code> to force a cat spawn.</li>
+<li>Run <code>/forget</code> and then <code>/setup</code> again.</li>
+<li>If it still fails, contact <a href="https://discord.gg/staring">our support server</a> in #support channel.</li>
+</ol>
+
+<h2>Cat Catching Logic</h2>
+<p>Overview when sending <code>cat</code>:</p>
+<ul>
+<li>Check if a cat exists and user is in <code>/preventcatch</code> mode; react with :pointlaugh: if so.</li>
+<li>Pick next spawn time early.</li>
+<li>Calculate catch time using message ID; accurate up to 2 decimal places unless <1 second.</li>
+<li>Determine cat type:
+    <ul>
+        <li>Before Feb 11, 2025: scan emoji in message; blacklisted emojis cannot be used in <code>/changemessage</code>.</li>
+        <li>After Feb 11, 2025: type stored in DB.</li>
+        <li>If original message is deleted, show fallback message and end early.</li>
+    </ul>
+</li>
+<li>Calculate prism boost chance (eGirl cat boosts included).</li>
+<li>Handle powerups like blessings and cataine.</li>
+<li>Randomly advertise Cat Rains (1/8 chance) or fun fact/hint (1/20 chance).</li>
+<li>Choose custom catch message if set; otherwise, cat-themed message.</li>
+<li>Choose button to attach with various probabilities (vote, join Discord, special events, etc.).</li>
+<li>Add cats to user, send catch message, delete spawn message, update personal bests, grant achievements, complete quests.</li>
+<li>Detect unexpected rain ending, restart it, and compensate with 3 cats.</li>
+<li>Sleep until next spawn time and spawn cat.</li>
+</ul>
+
+<h3>Trivia</h3>
+<ul>
+<li>April 29th, 2025: special 0-second catch message: "this fella was cought in 0.000 seconds (woah)".</li>
+<li>New rain system added August 11th, 2025.</li>
+<li>"Should end" formula updated August 24th, 2025: <code>floor(rain time + 600 * 1.3)</code>.</li>
+</ul>
+
+</div>
+
+</body>
+</html>

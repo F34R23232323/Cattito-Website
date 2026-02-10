@@ -1,0 +1,29 @@
+# Virtual environments
+venv/
+.venv/
+ENV/
+
+# Environment variables
+.env
+.env.*
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Dependencies / packaging
+*.egg-info/
+.eggs/
+
+# Databases / runtime files
+*.db
+backup.dump
+
+# Logs
+*.log
+
+# OS / editor junk
+.DS_Store
+.idea/
+.vscode/
+node_modules

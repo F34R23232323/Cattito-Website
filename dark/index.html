@@ -1,0 +1,290 @@
+<style>
+    :root {
+        --primary-color: #FFC064; /* Gold-orange */
+        --secondary-color: #6E593C; /* Earthy brown */
+        --background-dark: #1f1f27; /* Dark background, slightly deeper */
+        --text-light: #ECF0F1;
+        --text-accent: #FFD97D;
+        --code-background: #2d2d38;
+        --shadow-dark: rgba(0, 0, 0, 0.5);
+        --border-radius: 12px;
+        --danger-color: #e74c3c;
+        --dark-accent: #3a3a4f;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-dark);
+        color: var(--text-light);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: 'Permanent Marker', cursive;
+        color: var(--primary-color);
+        text-shadow: 0 0 10px var(--primary-color);
+    }
+
+    .subsection-title {
+        font-size: 1.8em;
+        color: var(--text-light);
+        margin-top: 35px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 5px;
+        font-weight: 600;
+    }
+
+    .lead-text {
+        text-align: center;
+        color: #bdc3c7;
+        font-size: 1.1em;
+        margin-bottom: 20px;
+    }
+
+    /* Hero Section */
+    .hero-box {
+        background: linear-gradient(135deg, #2c2c38, #1a1a22);
+        border: 2px solid var(--primary-color);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 0 15px var(--shadow-dark);
+        margin: 30px auto;
+        max-width: 700px;
+    }
+
+    .hero-box h1 {
+        font-family: 'Permanent Marker', cursive;
+        font-size: 2.2em;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+    }
+
+    .warning-box {
+        background-color: #402020;
+        border-left: 5px solid var(--danger-color);
+        padding: 15px;
+        border-radius: var(--border-radius);
+        margin: 20px auto;
+        max-width: 800px;
+        font-weight: 600;
+        text-align: center;
+        color: var(--danger-color);
+    }
+
+    code {
+        background-color: var(--code-background);
+        padding: 3px 6px;
+        border-radius: 4px;
+        color: var(--text-accent);
+        font-family: monospace;
+    }
+
+    /* Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        box-shadow: 0 2px 10px var(--shadow-dark);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+    }
+
+    thead {
+        background-color: var(--dark-accent);
+    }
+
+    thead th {
+        padding: 12px;
+        color: var(--text-accent);
+        font-size: 1.1em;
+        text-align: left;
+    }
+
+    tbody tr {
+        background-color: #2a2a35;
+        transition: background-color 0.2s;
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #24242f;
+    }
+
+    tbody tr:hover {
+        background-color: #333344;
+    }
+
+    tbody td {
+        padding: 10px;
+    }
+
+    /* Trivia & Lists */
+    .trivia-list {
+        list-style: none;
+        padding-left: 0;
+        max-width: 900px;
+        margin: 20px auto 40px;
+    }
+
+    .trivia-list li {
+        background-color: #2a2a35;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 6px;
+        border-left: 4px solid var(--primary-color);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    details {
+        background-color: #2a2a35;
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin: 15px 0;
+        cursor: pointer;
+    }
+
+    details summary {
+        font-weight: 600;
+        color: var(--text-accent);
+    }
+
+    ul {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+</style>
+
+<div class="container">
+
+    <div class="hero-box">
+        <h1>🌑 Dark Market & 🕶️ Mafia Hideout</h1>
+        <p class="lead-text">Unlock the hidden corners of the cat underworld. Late & Postgame exclusive content — enter at your own risk!</p>
+    </div>
+
+    <div class="warning-box">
+        ⚠️ THIS IS LATEGAME CONTENT, VIEW AT YOUR OWN RISK!
+    </div>
+
+    <!-- Dark Market Section -->
+    <h2 class="subsection-title">Dark Market</h2>
+    <p>The Dark Market is a <em>hidden</em>, unlockable area found in the <code>/achievements</code> command. Along with <code>/slots</code>, it has canon Cat Bot lore.</p>
+
+    <h3 class="subsection-title">Unlocking the Dark Market</h3>
+    <p>After collecting at least <strong>20 Fine cats</strong>, there is a <strong>1/11 chance</strong> that a mysterious button — “You see a shadow...” — will appear on any cat you catch. Clicking it triggers dialogue with instructions. Missed it? Don’t worry. It’ll come again later.</p>
+
+    <h3 class="subsection-title">Accessing the Market</h3>
+    <p>Click the "Hidden" category in the <code>/achievements</code> tab <strong>3 times</strong> to enter. (You must have triggered the shadow event first.)</p>
+
+    <h3 class="subsection-title">Cataine</h3>
+    <p>Cataine lasts <strong>12 hours</strong> and doubles the amount of cats you catch. It stacks with <strong>prisms</strong> and <strong>blessings</strong>. While active, catching a cat will display:</p>
+    <p><code>🧂 cataine worked! your catch got doubled!</code></p>
+    <p>When expired:</p>
+    <p><code>your cataine buff has expired. you know where to get a new one 😏</code></p>
+
+    <h4 class="subsection-title">Cataine Prices</h4>
+    <p>Limit: <strong>10 Cataine</strong> in the market. Buying the 11th triggers a special minigame for harsher prices.</p>
+
+    <table>
+        <thead>
+            <tr><th>Cataine Number</th><th>Cat Type</th><th>Amount Needed</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>Fine</td><td>5</td></tr>
+            <tr><td>2</td><td>Good</td><td>5</td></tr>
+            <tr><td>3</td><td>Wild</td><td>4</td></tr>
+            <tr><td>4</td><td>Epic</td><td>4</td></tr>
+            <tr><td>5</td><td>Brave</td><td>3</td></tr>
+            <tr><td>6</td><td>Reverse</td><td>3</td></tr>
+            <tr><td>7</td><td>Trash</td><td>2</td></tr>
+            <tr><td>8</td><td>Mythic</td><td>2</td></tr>
+            <tr><td>9</td><td>Corrupt</td><td>1</td></tr>
+            <tr><td>10</td><td>Divine</td><td>1</td></tr>
+            <tr><td>11</td><td>eGirl</td><td>100</td></tr>
+        </tbody>
+    </table>
+
+    <!-- Mafia Hideout Section -->
+    <h2 class="subsection-title">Mafia Hideout</h2>
+    <div class="warning-box">
+        ⚠️ POSTGAME CONTENT, VIEW AT YOUR OWN RISK!
+    </div>
+    <p>After buying all 10 Cataine and completing the story (~defeating the Dog Mafia), The Mafia Hideout replaces the Dark Market. It offers <strong>3–5 Cataine per week</strong> with prices from its own table.</p>
+
+    <h3 class="subsection-title">Mafia Hideout Cataine Prices</h3>
+    <table>
+        <thead>
+            <tr><th>Cat Type</th><th>Amount Needed</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Fine</td><td>10</td></tr>
+            <tr><td>Fine</td><td>30</td></tr>
+            <tr><td>Good</td><td>20</td></tr>
+            <tr><td>Rare</td><td>15</td></tr>
+            <tr><td>Wild</td><td>20</td></tr>
+            <tr><td>Epic</td><td>10</td></tr>
+            <tr><td>Sus</td><td>20</td></tr>
+            <tr><td>Rickroll</td><td>15</td></tr>
+            <tr><td>Superior</td><td>7</td></tr>
+            <tr><td>Legendary</td><td>5</td></tr>
+            <tr><td>8bit</td><td>3</td></tr>
+            <tr><td>Divine</td><td>4</td></tr>
+            <tr><td>Real</td><td>3</td></tr>
+            <tr><td>Ultimate</td><td>2</td></tr>
+            <tr><td>eGirl</td><td>1</td></tr>
+        </tbody>
+    </table>
+
+    <p><strong>Resets weekly:</strong> Monday 12:00 a.m. UTC</p>
+
+    <details>
+        <summary>Mafia Hideout Weekly Cataine Price List</summary>
+        <p>Refer to the original table for the full 53-week list.</p>
+    </details>
+
+    <h3 class="subsection-title">Unlock Dialogue</h3>
+    <ul>
+        <li>You see a shadow... [varies depending on catching the cat or previous unlock]</li>
+        <li>The dark voice instructs: click the "Hidden" tab in <code>/achievements</code> 3 times to access services.</li>
+    </ul>
+
+    <h3 class="subsection-title">Story Completion Dialogue</h3>
+    <ul>
+        <li>Encounter with the Dog Mafia and your reaction to insane prices.</li>
+        <li>DEATH sequence and running away to the police.</li>
+        <li>Next day: news reveals the Dog Mafia was caught.</li>
+    </ul>
+
+    <h3 class="subsection-title">Running Minigame</h3>
+    <p>Spam the "RUN!" button as fast as possible. There’s no time limit — but clicking too fast may freeze it. Re-enter the Dark Market to restart if needed.</p>
+
+    <h4 class="subsection-title">Achievements</h4>
+    <table>
+        <thead>
+            <tr><th>Name</th><th>Description</th><th>Category</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Shady Corner</td><td>Enter dark market</td><td>Cat Hunt</td></tr>
+            <tr><td>Thanks for Playing (Cataine Addict)</td><td>Complete the story (Defeat the Dog Mafia)</td><td>Cat Hunt</td></tr>
+            <tr><td>Hyper Hidden</td><td>20x more hidden</td><td>Hard</td></tr>
+        </tbody>
+    </table>
+
+    <h3 class="subsection-title">Trivia</h3>
+    <ul class="trivia-list">
+        <li>Even with 100 eGirl cats, you cannot buy the 11th Cataine.</li>
+        <li>No time pressure exists for the RUN! minigame.</li>
+        <li>Minigame can be restarted by re-entering the Dark Market.</li>
+        <li>The Mafia Hideout was added on May 25th, 2025.</li>
+        <li>Old Dark Market Cataine prices (pre-March 31, 2025) match the current Mafia Hideout prices.</li>
+    </ul>
+
+</div>

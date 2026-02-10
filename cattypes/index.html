@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cattito Cat Types Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+    /* CSS Variables for the dark theme */
+    :root {
+        --primary-color: #FFC064; /* Cat-orange/gold for accents */
+        --secondary-color: #6E593C; /* Earthy brown for borders/minor accents */
+        --background-dark: #2C3E50; /* Dark blue-gray background */
+        --content-background: #34495E; /* Darker blue-gray for the main content box */
+        --text-light: #ECF0F1;
+        --text-accent: #FFD97D; /* Lighter accent for highlights */
+        --code-background: #4A6572; /* Slightly lighter blue-gray for code */
+        --shadow-dark: rgba(0, 0, 0, 0.4);
+        --border-radius: 12px;
+    }
+
+    /* Base Typography and Container */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-dark);
+        color: var(--text-light);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: var(--content-background);
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 30px var(--shadow-dark);
+        border-top: 5px solid var(--primary-color);
+    }
+
+    /* Headers */
+    h1 {
+        font-family: 'Permanent Marker', cursive;
+        color: var(--primary-color);
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 5px;
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 10px;
+    }
+
+    h2, h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.4em;
+        color: var(--text-accent);
+        margin-top: 30px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        border-left: 4px solid var(--secondary-color);
+        font-weight: 600;
+    }
+    
+    /* General Text and Links */
+    p {
+        margin-bottom: 15px;
+        padding-left: 10px;
+    }
+    
+    strong {
+        color: var(--text-accent);
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: var(--text-accent);
+        text-decoration: underline;
+    }
+
+    ul {
+        margin-top: 5px;
+        padding-left: 40px;
+        list-style: disc;
+    }
+    
+    ul li {
+        margin-bottom: 5px;
+    }
+
+    code {
+        background: #2C3E50; 
+        color: var(--text-accent);
+        padding: 4px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.95em;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* Blockquote for the Mystery Cat note */
+    blockquote {
+        margin: 20px 10px;
+        padding: 15px;
+        border-left: 5px solid var(--primary-color);
+        background-color: #3A536B;
+        border-radius: 4px;
+        font-style: italic;
+    }
+    
+    blockquote img {
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    /* --- Table Styles --- */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        text-align: left;
+        background-color: #2C3E50;
+        border-radius: var(--border-radius);
+        overflow: hidden; /* Ensures borders/shadows work correctly */
+        box-shadow: 0 5px 15px var(--shadow-dark);
+    }
+
+    thead tr {
+        background-color: var(--primary-color);
+        color: var(--background-dark);
+        text-align: center;
+        font-weight: 700;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #4A6572; /* Slightly visible internal borders */
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    tbody tr {
+        border-bottom: 1px solid #4A6572;
+        transition: background-color 0.2s ease;
+    }
+
+    tbody tr:nth-of-type(even) {
+        background-color: #34495E; /* Slightly darker row for contrast */
+    }
+
+    tbody tr:hover {
+        background-color: #4A6572; /* Hover effect */
+    }
+
+    tbody tr:last-of-type {
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    /* Special styling for icon columns to prevent large vertical space */
+    td:first-child, td:nth-child(2) {
+        padding: 5px 10px;
+    }
+
+    /* Ensure images in cells are well-behaved */
+    td img {
+        display: block;
+        margin: 0 auto;
+        border: none;
+    }
+
+    /* Responsive table for smaller screens */
+    @media (max-width: 768px) {
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+
+        thead tr {
+            position: absolute;
+            top: -9999px; /* Hide header row */
+            left: -9999px;
+        }
+
+        /* Display rows as blocks, but use a cleaner approach for readability */
+        td {
+            border: none;
+            position: relative;
+            padding-left: 50%;
+            text-align: right;
+            border-bottom: 1px solid #4A6572;
+        }
+
+        td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            width: 45%;
+            padding-left: 15px;
+            font-weight: bold;
+            text-align: left;
+            color: var(--text-accent);
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Cat Types Wiki</h1>
+
+<h2>Cat Types</h2>
+<p>There are currently 22 cat types in total. Check the table below for reference (all numbers are rounded to the nearest hundredth):</p>
+<blockquote>If a cat type isn't caught in a server, it will show up as ??? <img src="/mysterycat.png" alt="mysterycat" width="16" height="16">, so if you don't see a cat type on this list, that's why.</blockquote>
+
+<div class="table-wrapper">
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+<th>Icon</th>
+<th>Old Icon</th>
+<th>Cat Type</th>
+<th>Spawn Chance%</th>
+<th>Value</th>
+<th>Chance out of 4108</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369190312706208.png?raw=true" width="64" height="64" alt="finecat"></td>
+<td data-label="Old Icon"><img src="https://cdn.discordapp.com/emojis/967056204855656538.png?raw=true" width="64" height="64" alt="fine_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Fine"><strong>Fine</strong></a></td>
+<td data-label="Spawn Chance%">24.34</td>
+<td data-label="Value">4.11</td>
+<td data-label="Chance out of 4108">1000</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369188043587594.png?raw=true" width="64" height="64" alt="nicecat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/nicecat_(1).png?raw=true" width="64" height="64" alt="nice_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Nice"><strong>Nice</strong></a></td>
+<td data-label="Spawn Chance%">18.25</td>
+<td data-label="Value">5.48</td>
+<td data-label="Chance out of 4108">750</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369185422282863.png?raw=true" width="64" height="64" alt="goodcat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/1990_good.webp?raw=true" width="64" height="64" alt="good_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Good"><strong>Good</strong></a></td>
+<td data-label="Spawn Chance%">12.17</td>
+<td data-label="Value">8.22</td>
+<td data-label="Chance out of 4108">500</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369888869974036.png?raw=true" width="64" height="64" alt="rarecat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/1990_rare.webp?raw=true" width="64" height="64" alt="rare_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Rare"><strong>Rare</strong></a></td>
+<td data-label="Spawn Chance%">8.51</td>
+<td data-label="Value">11.74</td>
+<td data-label="Chance out of 4108">350</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369172847755284.png?raw=true" width="64" height="64" alt="wildcat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/wild_cat_1990.webp?raw=true" width="64" height="64" alt="wild_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Wild"><strong>Wild</strong></a></td>
+<td data-label="Spawn Chance%">6.69</td>
+<td data-label="Value">14.94</td>
+<td data-label="Chance out of 4108">275</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369170121199677.png?raw=true" width="64" height="64" alt="babycat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/baby_cat_1990.webp?raw=true" width="64" height="64" alt="baby_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Baby"><strong>Baby</strong></a></td>
+<td data-label="Spawn Chance%">5.59</td>
+<td data-label="Value">17.86</td>
+<td data-label="Chance out of 4108">230</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369167881441338.png?raw=true" width="64" height="64" alt="epiccat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/epic_cat_1990.webp?raw=true" width="64" height="64" alt="epic_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Epic"><strong>Epic</strong></a></td>
+<td data-label="Spawn Chance%">4.86</td>
+<td data-label="Value">20.54</td>
+<td data-label="Chance out of 4108">200</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369181018263714.png?raw=true" width="64" height="64" alt="suscat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/sus_old_1.png?raw=true" width="64" height="64" alt="sus_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Sus"><strong>Sus</strong></a></td>
+<td data-label="Spawn Chance%">4.25</td>
+<td data-label="Value">23.47</td>
+<td data-label="Chance out of 4108">175</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369177411026964.png?raw=true" width="64" height="64" alt="bravecat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/brave_old.png?raw=true" width="64" height="64" alt="brave_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Brave"><strong>Brave</strong></a></td>
+<td data-label="Spawn Chance%">3.65</td>
+<td data-label="Value">27.39</td>
+<td data-label="Chance out of 4108">150</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369165348081844.png?raw=true" width="64" height="64" alt="rickrollcat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/rickroll_old.png?raw=true" width="64" height="64" alt="rickroll_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Rickroll"><strong>Rickroll</strong></a></td>
+<td data-label="Spawn Chance%">3.04</td>
+<td data-label="Value">32.86</td>
+<td data-label="Chance out of 4108">125</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369161766277250.png?raw=true" width="64" height="64" alt="reversecat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/reverse_old.png?raw=true" width="64" height="64" alt="reverse_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Reverse"><strong>Reverse</strong></a></td>
+<td data-label="Spawn Chance%">2.43</td>
+<td data-label="Value">41.08</td>
+<td data-label="Chance out of 4108">100</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369159228719135.png?raw=true" width="64" height="64" alt="superiorcat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/superior_old.png?raw=true" width="64" height="64" alt="superior_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Superior"><strong>Superior</strong></a></td>
+<td data-label="Spawn Chance%">1.94</td>
+<td data-label="Value">51.35</td>
+<td data-label="Chance out of 4108">80</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369886550524055.png?raw=true" width="64" height="64" alt="thetrashcellcat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/trash_old.png?raw=true" width="64" height="64" alt="trash_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Trash"><strong>Trash</strong></a></td>
+<td data-label="Spawn Chance%">1.21</td>
+<td data-label="Value">82.16</td>
+<td data-label="Chance out of 4108">50</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369884189003826.png?raw=true" width="64" height="64" alt="legendarycat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/legendary_old.png?raw=true" width="64" height="64" alt="legendary_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Legendary"><strong>Legendary</strong></a></td>
+<td data-label="Spawn Chance%">0.85</td>
+<td data-label="Value">117.37</td>
+<td data-label="Chance out of 4108">35</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369163196661862.png?raw=true" width="64" height="64" alt="mythiccat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/mythic_old.png?raw=true" width="64" height="64" alt="mythic_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Mythic"><strong>Mythic</strong></a></td>
+<td data-label="Spawn Chance%">0.60</td>
+<td data-label="Value">164.32</td>
+<td data-label="Chance out of 4108">25</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369157525966909.png?raw=true" width="64" height="64" alt="8bitcat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/8bit_old.png?raw=true" width="64" height="64" alt="8bit_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/8bit"><strong>8bit</strong></a></td>
+<td data-label="Spawn Chance%">0.48</td>
+<td data-label="Value">205.4</td>
+<td data-label="Chance out of 4108">20</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369155835396136.png?raw=true" width="64" height="64" alt="corruptcat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/corrupt_old.png?raw=true" width="64" height="64" alt="corrupt_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Corrupt"><strong>Corrupt</strong></a></td>
+<td data-label="Spawn Chance%">0.36</td>
+<td data-label="Value">273.87</td>
+<td data-label="Chance out of 4108">15</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369153373343788.png?raw=true" width="64" height="64" alt="professorcat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/professor_old.png?raw=true" width="64" height="64" alt="professor_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Professor"><strong>Professor</strong></a></td>
+<td data-label="Spawn Chance%">0.24</td>
+<td data-label="Value">410.8</td>
+<td data-label="Chance out of 4108">10</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369151083249664.png?raw=true" width="64" height="64" alt="divinecat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/divine_old.png?raw=true" width="64" height="64" alt="divine_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Divine"><strong>Divine</strong></a></td>
+<td data-label="Spawn Chance%">0.19</td>
+<td data-label="Value">513.5</td>
+<td data-label="Chance out of 4108">8</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369148529049735.png?raw=true" width="64" height="64" alt="realcat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/real_old.png?raw=true" width="64" height="64" alt="real_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Real"><strong>Real</strong></a></td>
+<td data-label="Spawn Chance%">0.12</td>
+<td data-label="Value">821.6</td>
+<td data-label="Chance out of 4108">5</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369146624966718.png?raw=true" width="64" height="64" alt="ultimatecat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/ultimate_old.png?raw=true" width="64" height="64" alt="ultimate_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/Ultimate"><strong>Ultimate</strong></a></td>
+<td data-label="Spawn Chance%">0.07</td>
+<td data-label="Value">1369.33</td>
+<td data-label="Chance out of 4108">3</td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369144636870796.png?raw=true" width="64" height="64" alt="egirlcat"></td>
+<td data-label="Old Icon"><img src="/cats_and_emojis/egirl_old.png?raw=true" width="64" height="64" alt="egirl_old"></td>
+<td data-label="Cat Type"><a href="/cat-types/eGirl"><strong>eGirl</strong></a></td>
+<td data-label="Spawn Chance%">0.05</td>
+<td data-label="Value">2054</td>
+<td data-label="Chance out of 4108">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>Custom Cats</h3>
+<p>These **exclusive cats** can only be obtained through the official Discord server (<a href="https://discord.gg/staring">Cat Stand</a>) and by trusted members. Any cats outside of the above table are Custom cats, placed after the eGirl cat in inventory. They have **no value** and only one type can be had at a time. Custom cats cannot be <code>/trade</code>-d or <code>/gift</code>-ed.</p>
+<p>The amount of the custom cat can be changed using <code>cat!amount (amount)</code>. Images of some Custom cats can be found <a href="https://github.com/staring-cat/emojis/tree/main/optional/custom_cats">here</a>.</p>
+
+<h3>Removed/Renamed Cats</h3>
+<blockquote>Those cats had no icons and value wasn't a thing at that time. (Except for **TheTrashCell cat** which was just a rename)</blockquote>
+
+<div class="table-wrapper">
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+<th>Cat Type</th>
+<th>Approximate Rarity</th>
+<th>Renamed to (if not deleted)</th>
+<th>When got removed/renamed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="Cat Type"><strong>Noice</strong></td>
+<td data-label="Approximate Rarity">Unknown (likely common)</td>
+<td data-label="Renamed to">Deleted</td>
+<td data-label="When removed">Added on April 21st 2022, deleted on April 22nd 2022</td>
+</tr>
+<tr>
+<td data-label="Cat Type"><strong>Mystic</strong></td>
+<td data-label="Approximate Rarity">~Mythic (0.61%)</td>
+<td data-label="Renamed to">Renamed to Mythic</td>
+<td data-label="When removed">Added April 21st 2022, renamed April 22nd 2022</td>
+</tr>
+<tr>
+<td data-label="Cat Type"><strong>Best</strong></td>
+<td data-label="Approximate Rarity">Rare (~0.49%-0.24%)</td>
+<td data-label="Renamed to">Deleted</td>
+<td data-label="When removed">Added April 21st 2022, deleted April 22nd 2022</td>
+</tr>
+<tr>
+<td data-label="Cat Type"><strong>God</strong></td>
+<td data-label="Approximate Rarity">~Divine (0.19%)</td>
+<td data-label="Renamed to">Renamed to Divine</td>
+<td data-label="When removed">Added April 21st 2022, renamed April 22nd 2022</td>
+</tr>
+<tr>
+<td data-label="Cat Type"><strong>Staring</strong></td>
+<td data-label="Approximate Rarity">~Ultimate (0.09%) or Real (0.12%)</td>
+<td data-label="Renamed to">Deleted/Renamed to Ultimate/Real</td>
+<td data-label="When removed">Added April 21st 2022, deleted/renamed April 22nd 2022</td>
+</tr>
+<tr>
+<td data-label="Cat Type"><strong>TheTrashCell</strong></td>
+<td data-label="Approximate Rarity">~Trash (1.22%)</td>
+<td data-label="Renamed to">Renamed to Trash</td>
+<td data-label="When removed">Added September 19th 2022, renamed January 25th 2025</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>Trivia</h3>
+<ul>
+<li>Before June 20th 2024, sprites were hand-drawn by Milenakos (Lia). Old sprites are <a href="https://github.com/staring-cat/emojis/tree/main/old">here</a>.</li>
+<li>After the texture update, sprites were hand-drawn by TheTrashCell.</li>
+<li>**Value calculation:** <code>100 / (Spawn Chance %)</code>. Average catch = 22 value.</li>
+<li>Trash cat used to be TheTrashCell.</li>
+<li>Special catch messages (default) for some cats:</li>
+</ul>
+
+<div class="table-wrapper">
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+<th>Icon</th>
+<th>Cat Type</th>
+<th>Special Caught Messages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369181018263714.png?size=64" alt="suscat"></td>
+<td data-label="Cat Type">Sus</td>
+<td data-label="Special Messages"><img src="/caught_sus1.png" alt="caught_sus1"></td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369165348081844.png?size=64" alt="rickrollcat"></td>
+<td data-label="Cat Type">Rickroll</td>
+<td data-label="Special Messages"><img src="/caught_rickroll1.png" alt="caught_rickroll1"></td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369161766277250.png?size=64" alt="reversecat"></td>
+<td data-label="Cat Type">Reverse</td>
+<td data-label="Special Messages"><img src="/caught_reverse1.png" alt="caught_reverse1"></td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369157525966909.png?size=64" alt="8bitcat"></td>
+<td data-label="Cat Type">8bit</td>
+<td data-label="Special Messages"><img src="/caught_8bit1.png" alt="caught_8bit1"></td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369155835396136.png?size=64" alt="corruptcat"></td>
+<td data-label="Cat Type">Corrupt</td>
+<td data-label="Special Messages"><img src="/caught_corrupt1.png" alt="caught_corrupt1"></td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369153373343788.png?size=64" alt="professorcat"></td>
+<td data-label="Cat Type">Professor</td>
+<td data-label="Special Messages"><img src="/caught_professor1.png" alt="caught_professor1"></td>
+</tr>
+<tr>
+<td data-label="Icon"><img src="https://cdn.discordapp.com/emojis/1253369144636870796.png?size=64" alt="egirlcat"></td>
+<td data-label="Cat Type">eGirl</td>
+<td data-label="Special Messages"><img src="/caught_egirl1.png" alt="caught_egirl1"></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</body>
+</html>

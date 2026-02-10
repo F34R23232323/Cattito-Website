@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cattito Cattlepass Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+    /* CSS Variables for the dark theme */
+    :root {
+        --primary-color: #FFC064; /* Cat-orange/gold for accents */
+        --secondary-color: #6E593C; /* Earthy brown for borders/minor accents */
+        --background-dark: #2C3E50; /* Dark blue-gray background */
+        --content-background: #34495E; /* Darker blue-gray for the main content box */
+        --text-light: #ECF0F1;
+        --text-accent: #FFD97D; /* Lighter accent for highlights */
+        --code-background: #4A6572; /* Slightly lighter blue-gray for code */
+        --shadow-dark: rgba(0, 0, 0, 0.4);
+        --border-radius: 12px;
+    }
+
+    /* Base Typography and Container */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-dark);
+        color: var(--text-light);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: var(--content-background);
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 30px var(--shadow-dark);
+        border-top: 5px solid var(--primary-color);
+    }
+
+    /* Headers */
+    h1 {
+        font-family: 'Permanent Marker', cursive;
+        color: var(--primary-color);
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 5px;
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 10px;
+    }
+
+    h2, h3, h4 {
+        font-family: 'Poppins', sans-serif;
+        color: var(--text-accent);
+        margin-top: 30px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        border-left: 4px solid var(--secondary-color);
+        font-weight: 600;
+    }
+    
+    h2 { font-size: 1.6em; }
+    h3 { font-size: 1.4em; }
+    h4 { font-size: 1.2em; border-left: 3px solid var(--secondary-color); }
+    
+    /* General Text and Links */
+    p {
+        margin-bottom: 15px;
+        padding-left: 10px;
+    }
+    
+    strong {
+        color: var(--text-accent);
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: var(--text-accent);
+        text-decoration: underline;
+    }
+
+    ul {
+        margin-top: 5px;
+        padding-left: 40px;
+        list-style: disc;
+    }
+    
+    ul li {
+        margin-bottom: 8px;
+        /* Style for the quests listed in the list item */
+        font-size: 0.95em;
+    }
+
+    code {
+        background: #2C3E50; 
+        color: var(--text-accent);
+        padding: 4px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.95em;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0;
+    }
+    
+    .screenshot {
+        display: block;
+        margin: 20px auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px var(--shadow-dark);
+    }
+
+    /* --- Table Styles --- */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        text-align: left;
+        background-color: #2C3E50;
+        border-radius: var(--border-radius);
+        overflow: hidden; 
+        box-shadow: 0 5px 15px var(--shadow-dark);
+    }
+
+    thead tr {
+        background-color: var(--primary-color);
+        color: var(--background-dark);
+        text-align: center;
+        font-weight: 700;
+    }
+
+    th, td {
+        padding: 10px 10px;
+        border: 1px solid #4A6572; 
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    tbody tr {
+        border-bottom: 1px solid #4A6572;
+        transition: background-color 0.2s ease;
+    }
+
+    tbody tr:nth-of-type(even) {
+        background-color: #34495E; 
+    }
+
+    tbody tr:hover {
+        background-color: #4A6572; 
+    }
+
+    tbody tr:last-of-type {
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    /* Responsive table for smaller screens - focusing on the XP table */
+    @media (max-width: 768px) {
+        /* Force table to not be like a table for the Level/XP table */
+        table { border: 0; }
+        
+        table thead { display: none; }
+
+        table tr { 
+            border: 1px solid #4A6572; 
+            margin-bottom: 10px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 columns for level/xp on small screens */
+            gap: 1px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+        }
+
+        table td {
+            border: none;
+            text-align: center;
+            padding: 8px;
+            background-color: var(--content-background);
+        }
+        
+        /* The main Level/XP table is structured oddly, so we need to manually label data for small screens if needed.
+           However, given the original structure, showing it as a block of 10 columns won't work. We'll use the grid approach:
+           For the multi-column table, we'll revert to the original (non-responsive) view but allow horizontal scroll
+           as custom column labeling is too complex for this structure.
+        */
+        
+        /* Revert to default table style for multi-column layout on small screens (with scroll) */
+        .xp-table-wrapper {
+            overflow-x: auto;
+            width: 100%;
+        }
+        .xp-table-wrapper table {
+            min-width: 700px; /* Force minimum width to show all columns */
+        }
+        .xp-table-wrapper table thead { display: table-header-group; }
+        .xp-table-wrapper table tr { display: table-row; }
+        .xp-table-wrapper table td { display: table-cell; }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1>Cattlepass</h1>
+
+<h2>The Cattlepass System</h2>
+<p>The Cattlepass is accessed by running <code>/battlepass</code>. Seasons reset **monthly** (1st 00:00 UTC), each with a different set of <a href="/cattlepass-rewards">rewards</a>. Each level requires XP to **level up and get the reward**. XP is obtained by **completing quests**, which show in the Cattlepass menu. Quest XP ranges from minimum to maximum, always multiples of 10.</p>
+<p>XP per level is likely global across all seasons. XP increases by 50 every three levels (e.g., Levels 1-3 require **550**, Levels 4-6 require **600**). Bonus levels (31+) require **1500 XP** each.</p>
+<img src="/screenshot_20250726_170001.png" width="350" alt="Cattlepass Screenshot" class="screenshot">
+
+<h3>Rewards</h3>
+<p>See <a href="/cattlepass-rewards">Cattlepass Rewards</a></p>
+
+<h3>Levels (XP Needed)</h3>
+<div class="xp-table-wrapper">
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+<th>Level</th><th>XP Needed</th><th>Level</th><th>XP Needed</th><th>Level</th><th>XP Needed</th><th>Level</th><th>XP Needed</th><th>Level</th><th>XP Needed</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>550</td><td>7</td><td>650</td><td>13</td><td>750</td><td>19</td><td>850</td><td>25</td><td>950</td></tr>
+<tr><td>2</td><td>550</td><td>8</td><td>650</td><td>14</td><td>750</td><td>20</td><td>850</td><td>26</td><td>950</td></tr>
+<tr><td>3</td><td>550</td><td>9</td><td>650</td><td>15</td><td>750</td><td>21</td><td>850</td><td>27</td><td>950</td></tr>
+<tr><td>4</td><td>600</td><td>10</td><td>700</td><td>16</td><td>800</td><td>22</td><td>900</td><td>28</td><td>1000</td></tr>
+<tr><td>5</td><td>600</td><td>11</td><td>700</td><td>17</td><td>800</td><td>23</td><td>900</td><td>29</td><td>1000</td></tr>
+<tr><td>6</td><td>600</td><td>12</td><td>700</td><td>18</td><td>800</td><td>24</td><td>900</td><td>30</td><td>1000</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Quests (22 total)</h3>
+<p>Quests fall into 3 categories: **Voting (1)**, **Catching (9)**, **Miscellaneous (14)**. Only 3 quests can be done before they refresh (12h). Reminders can ping when quests refresh.</p>
+
+<h4>Voting (1 quest)</h4>
+<ul>
+<li>**Vote on Top.gg**: Vote for Cattito using <code>/vote</code> or <a href="https://top.gg/bot/966695034340663367/vote">here</a>. Then run <code>/battlepass</code> or press "Refresh" to get XP and a Gold pack every 5 days from day 10 (bot-wide refresh). Shows voting streak.<br>**XP Gain**: 250-350</li>
+</ul>
+
+<h4>Catching (9 quests)</h4>
+<ul>
+<li>⏱️ **Catch in under 10 sec** — **XP Gain**: 250-290</li>
+<li>🤔 **Catch on an odd second** — **XP Gain**: 230-290</li>
+<li>🤔 **Catch on an even second** — **XP Gain**: 230-290</li>
+<li><img src="https://cdn.discordapp.com/emojis/1253369190312706208.png?raw=true" width="16" height="16" alt="finecat"> **Catch two Fine cats** — **XP Gain**: 330-370</li>
+<li><img src="https://cdn.discordapp.com/emojis/1253369185422282863.png?raw=true" width="16" height="16" alt="goodcat"> **Catch a Good cat** — **XP Gain**: 300-340</li>
+<li><img src="https://cdn.discordapp.com/emojis/1253369190312706208.png?raw=true" width="16" height="16" alt="finecat"> **Catch a Fine cat and a Nice cat** — **XP Gain**: 340-400</li>
+<li><img src="https://cdn.discordapp.com/emojis/1253369188043587594.png?raw=true" width="16" height="16" alt="nicecat"> **Catch three cats** — **XP Gain**: 260-320</li>
+<li><img src="https://cdn.discordapp.com/emojis/1253369888869974036.png?raw=true" width="16" height="16" alt="rarecat"> **Catch a Rare or better cat** — **XP Gain**: 250-290</li>
+<li><img src="/prism.png" width="16" height="16" alt="prism"> **Trigger a prism boost** — **XP Gain**: 330-370</li>
+</ul>
+
+<h4>Miscellaneous (14 quests)</h4>
+<ul>
+<li>🎰 **Spin the <code>/slots</code> machine 5 times** — **XP Gain**: 150-250</li>
+<li><img src="/ach.png" width="16" height="16" alt="ach"> **Get an achievement** — **XP Gain**: 180-260</li>
+<li>💱 **Complete a <code>/trade</code>** — **XP Gain**: 280-320</li>
+<li>📰 **Read a <code>/news</code> article** — **XP Gain**: 150-210</li>
+<li>🅾️ **Play a game of <code>/tictactoe</code>** — **XP Gain**: 170-230</li>
+<li>🎁 **<code>/Gift</code> someone** — **XP Gain**: 180-220</li>
+<li>👍 **<code>/Rate</code> something** — **XP Gain**: 150-210</li>
+<li>🎱 **Ask the magic <code>/8ball</code>** — **XP Gain**: 120-220</li>
+<li>🏓 **Check cat's <code>/ping</code>** — **XP Gain**: 140-180</li>
+<li><img src="/sillycat.png" width="16" height="16" alt="sillycat"> **Use <code>/tiktok</code> TTS** — **XP Gain**: 130-210</li>
+<li>🤓 **Check out <code>/wiki</code>** — **XP Gain**: 120-200</li>
+<li>🎲 **<code>/Roll</code> a dice** — **XP Gain**: 120-220</li>
+<li>🐷 **Get 20+ score in <code>/pig</code>** — **XP Gain**: 200-250</li>
+<li>🎰 **Win a <code>/roulette</code> bet** — **XP Gain**: 175-225</li>
+</ul>
+
+<h3>The Packs Update</h3>
+<p>Season 3 added **Cat Packs** acquired from Cattlepass levels. 8 tiers: Wooden, Stone, Bronze, Silver, Gold, Platinum, Diamond, Celestial. Each pack has a 30% chance to upgrade (except Celestial) and gives a random cat type. See <a href="/packs">Cat Packs</a> for details.</p>
+
+<h3>Trivia</h3>
+<ul>
+<li>Updated **January 1st 2025**.</li>
+<li>Old Cattlepass had "Season 0" temporarily.</li>
+<li>Reminders have a 15-minute postpone button.</li>
+<li>Rains used to not count for time-based quests.</li>
+<li>Prism boosts used to count on cat-type quests.</li>
+<li>Quests refresh between seasons (except voting). Season timer may override refresh.</li>
+<li>Battlepass originally proposed by TheTrashCell.</li>
+<li>Refreshing quests early could double XP (bug).</li>
+<li>Rarely, quests could level up 2 levels at once (bug). </li>
+<li>Slots quest originally required 10 spins (before Jan 30th 2025).</li>
+<li>Quest names updated with slashes on Feb 23rd 2025.</li>
+<li>Packs Update replaced direct cat rewards with packs (March 1st 2025).</li>
+<li>“✏️ Set a <code>/reminder</code>” replaced by “🅾️ Play a game of <code>/tictactoe</code>”.</li>
+<li>Since April 1st 2025, /battlepass shows overview of all levels; since June 1st 2025, past rewards.</li>
+<li>Belated battlepass progress implemented May 26th 2025.</li>
+<li>🎲 /Roll quest added June 22nd 2025.</li>
+<li>🐷 /pig quest added July 23rd 2025.</li>
+<li>🎰 /roulette quest added August 25th 2025.</li>
+<li>Quest completion embed updated September 21st 2025.</li>
+</ul>
+
+</div>
+
+</body>
+</html>

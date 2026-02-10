@@ -1,0 +1,412 @@
+<style>
+    /* CSS Variables from previous responses for consistency */
+    :root {
+        --primary-color: #FFC064; /* Cat-orange/gold */
+        --secondary-color: #6E593C; /* Earthy brown */
+        --background-dark: #2C3E50; /* Dark background */
+        --text-light: #ECF0F1;
+        --text-accent: #FFD97D; /* Lighter accent for highlights */
+        --code-background: #34495E; /* Darker blue-gray for code blocks */
+        --shadow-dark: rgba(0, 0, 0, 0.4);
+        --border-radius: 12px;
+    }
+
+    /* Base Typography and Container (Assuming Poppins font is linked in <head>) */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-dark);
+        color: var(--text-light);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    h2, h3 {
+        font-family: 'Permanent Marker', cursive; /* Use distinct header font if available */
+        color: var(--primary-color);
+    }
+
+    /* --- Trading Section Specific Styles --- */
+
+    .documentation-section {
+        padding: 20px 0;
+    }
+
+    .section-title {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-align: center;
+        /* Using Permanent Marker style here for impact */
+        font-family: 'Permanent Marker', cursive; 
+    }
+
+    .subsection-title {
+        font-size: 1.8em;
+        color: var(--text-light);
+        margin-top: 35px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 5px;
+        font-family: 'Poppins', sans-serif; /* Use Poppins for these sub-headings for readability */
+        font-weight: 600;
+    }
+
+    .lead-text {
+        font-size: 1.1em;
+        color: #bdc3c7;
+        margin-bottom: 20px;
+    }
+
+    /* Warning Box Styling (Consistent with Unsubscribe page's card aesthetic) */
+    .alert-warning {
+        background-color: #795548; /* Darker brown/secondary color */
+        border-left: 5px solid var(--primary-color);
+        padding: 15px;
+        border-radius: var(--border-radius);
+        margin: 25px auto;
+        display: flex;
+        align-items: center;
+        max-width: 900px;
+        box-shadow: 0 4px 10px var(--shadow-dark);
+    }
+
+    .alert-icon {
+        font-size: 2em;
+        margin-right: 15px;
+        color: var(--primary-color);
+    }
+
+    .alert-warning p {
+        margin: 0;
+    }
+
+    /* Trade Steps (Numbered List) */
+    .trade-steps {
+        list-style-type: none;
+        counter-reset: trade-step-counter;
+        padding-left: 0;
+        max-width: 900px;
+        margin: 20px auto 30px;
+    }
+
+    .trade-steps li {
+        counter-increment: trade-step-counter;
+        position: relative;
+        padding: 10px 0 10px 40px;
+        margin-bottom: 8px;
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.05);
+    }
+
+    .trade-steps li::before {
+        content: counter(trade-step-counter);
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.9em;
+        box-shadow: 0 2px 4px var(--shadow-dark);
+    }
+
+
+    /* Dialog Card (Image and List) */
+    .dialog-card {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #34495E;
+        border-radius: var(--border-radius);
+        padding: 20px;
+        box-shadow: 0 5px 15px var(--shadow-dark);
+        max-width: 900px;
+        margin: 30px auto;
+    }
+
+    .dialog-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: var(--border-radius);
+        flex: 1 1 300px;
+        object-fit: contain;
+        margin-right: 20px;
+        border: 2px solid var(--primary-color);
+    }
+
+    .dialog-details {
+        flex: 1 1 400px;
+    }
+
+    .dialog-title {
+        color: var(--primary-color);
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.2em;
+        margin-top: 0;
+    }
+
+    .dialog-list {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    .dialog-list li {
+        margin-bottom: 10px;
+        border-left: 3px solid var(--primary-color);
+        padding-left: 10px;
+        font-weight: 600;
+    }
+
+    .dialog-list li span {
+        display: block;
+        font-weight: 400;
+        font-size: 0.9em;
+        color: #bdc3c7;
+    }
+
+    /* Value Text and Notes */
+    .value-text {
+        margin-bottom: 10px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .value-note {
+        font-size: 0.95em;
+        background-color: #4A6572;
+        padding: 10px;
+        border-radius: 6px;
+        max-width: 900px;
+        margin: 15px auto;
+        border-left: 3px solid var(--text-accent);
+    }
+
+    .value-tip {
+        font-weight: 700;
+        color: var(--text-accent);
+    }
+
+    /* Data Table Styling (Values and Achievements) */
+    .value-table-container, .achievement-table-container {
+        overflow-x: auto;
+        margin: 25px auto;
+        max-width: 900px;
+        box-shadow: 0 5px 15px var(--shadow-dark);
+        border-radius: var(--border-radius);
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #34495E;
+        min-width: 700px; 
+    }
+
+    .data-table th, .data-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border: none;
+    }
+
+    .data-table th {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9em;
+    }
+
+    .data-table tbody tr {
+        border-bottom: 1px solid #4A6572;
+        transition: background-color 0.2s ease;
+    }
+
+    .data-table tbody tr:nth-child(even) {
+        background-color: #394d63;
+    }
+
+    .data-table tbody tr:hover {
+        background-color: #4A6572;
+    }
+
+    .data-table td:nth-child(even) {
+        font-weight: 600; 
+        color: var(--text-accent);
+    }
+    
+    .data-table.achievements-table td:nth-child(2) {
+        font-weight: 400; /* Revert description text to normal weight */
+        color: var(--text-light);
+    }
+    .data-table.achievements-table td:nth-child(3) {
+        font-weight: 600; /* Highlight Category */
+        color: var(--primary-color);
+    }
+
+    /* Trivia List Styling */
+    .trivia-list {
+        list-style: none;
+        padding-left: 0;
+        max-width: 900px;
+        margin: 20px auto 40px;
+    }
+
+    .trivia-list li {
+        background-color: #34495E;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 6px;
+        font-size: 1.05em;
+        border-left: 4px solid var(--primary-color);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .trivia-list li span {
+        font-weight: 700;
+        color: var(--text-accent);
+        margin-right: 5px;
+    }
+
+    /* External Links */
+    .external-links {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.1em;
+    }
+
+    /* Media Query for smaller screens */
+    @media (max-width: 768px) {
+        .dialog-card {
+            flex-direction: column;
+        }
+
+        .dialog-image {
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
+    }
+</style>
+
+<div class="container documentation-section">
+    <h2 class="section-title">🤝 Cat Trading</h2>
+    <p class="lead-text">
+        Trading is a core mechanic allowing you to exchange cats, packs, prisms, and more with another player using the <code style="background-color: var(--code-background); padding: 2px 5px; border-radius: 4px; color: var(--text-light);">/trade</code> command.
+    </p>
+
+    <div class="alert-warning">
+        <span class="alert-icon">⚠️</span>
+        <p><strong>Trade Risk Alert:</strong> Trading can be a risk! Always be careful who you are trading with, as trades are **not reversible** once submitted. Cattito takes no responsibility for bad trades!</p>
+    </div>
+
+    <h3 class="subsection-title">How Trading Works</h3>
+    <ol class="trade-steps">
+        <li><strong>Start the Trade:</strong> Initiate a trade with a player using the <code style="background-color: var(--code-background); padding: 2px 5px; border-radius: 4px; color: var(--text-light);">/trade</code> command.</li>
+        <li><strong>The Embed:</strong> A detailed embed appears, showing two fields—one for each user—including their username, current offer, total **Value**, and number of items offered.</li>
+        <li><strong>Making an Offer:</strong> Press the <code>Offer...</code> button. A dialog will prompt you for the items you wish to offer:</li>
+    </ol>
+
+    <div class="dialog-card">
+        <img src="/trademenu.png" alt="Discord Trade Menu Dialog" class="dialog-image"/>
+        <div class="dialog-details">
+            <h4 class="dialog-title">Trade Offer Dialog Fields</h4>
+            <ul class="dialog-list">
+                <li>
+                    <strong>Cat, Pack Type, Prism Name, Or "Rain":</strong>
+                    <span>Specify the item to offer (case-insensitive). You can only offer **one thing** per popup. Repeat the process to offer multiple items.</span>
+                </li>
+                <li>
+                    <strong>Amount to offer:</strong>
+                    <span>Defaults to **1**. Must be a whole number (≤ your inventory). **Negative numbers** will reduce the amount offered and reset any user <code>Accept</code> states.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <ol class="trade-steps" start="4">
+        <li><strong>Offer Confirmation:</strong> If valid, your offer will instantly appear in the trade embed.</li>
+        <li><strong>Accept or Deny:</strong> Use the <code>Accept</code> and <code>Deny</code> buttons. Pressing <code>Deny</code> cancels the trade (the embed updates to show you cancelled).</li>
+        <li><strong>Finalizing the Trade:</strong> **Both users** must press <code>Accept</code> (a checkmark appears by your name). When both parties accept, the items are instantly swapped!</li>
+    </ol>
+
+    <h3 class="subsection-title">Item Values (Valuations)</h3>
+    <p class="value-text">
+        Every tradeable item has a value based on its **spawn chance** or a set fixed price. These values are used to show the total worth of each side's offer during a trade, helping ensure fair exchanges.
+    </p>
+    <p class="value-note">
+        <span class="value-tip">ℹ️ Value Notes:</span> Cat values are rounded to the nearest whole number. Pack values are rounded to the nearest fifth.
+    </p>
+
+    <div class="value-table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Item Type</th>
+                    <th>Value</th>
+                    <th>Item Type</th>
+                    <th>Value</th>
+                    <th>Item Type</th>
+                    <th>Value</th>
+                    <th>Item Type</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Fine cat</td><td>4</td><td>Brave cat</td><td>27</td><td>Corrupt cat</td><td>274</td><td>Wooden pack</td><td>75</td></tr>
+                <tr><td>Nice cat</td><td>6</td><td>Rickroll cat</td><td>33</td><td>Professor cat</td><td>411</td><td>Stone pack</td><td>100</td></tr>
+                <tr><td>Good cat</td><td>8</td><td>Reverse cat</td><td>41</td><td>Divine cat</td><td>514</td><td>Bronze pack</td><td>130</td></tr>
+                <tr><td>Rare cat</td><td>12</td><td>Superior cat</td><td>52</td><td>Real cat</td><td>822</td><td>Silver pack</td><td>200</td></tr>
+                <tr><td>Wild cat</td><td>14</td><td>Trash cat</td><td>82</td><td>Ultimate cat</td><td>1369</td><td>Gold pack</td><td>400</td></tr>
+                <tr><td>Baby cat</td><td>18</td><td>Legendary cat</td><td>117</td><td>eGirl cat</td><td>2054</td><td>Platinum pack</td><td>800</td></tr>
+                <tr><td>Epic cat</td><td>21</td><td>Mythic cat</td><td>164</td><td>1m of Cat Rain</td><td>900</td><td>Diamond pack</td><td>1200</td></tr>
+                <tr><td>Sus cat</td><td>23</td><td>8bit cat</td><td>205</td><td>Any prism</td><td>6271</td><td>Celestial pack</td><td>2000</td></tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <p class="external-links">
+        For more detailed information: <a href="/cat-types">Cat Types</a> • <a href="/prisms">Prisms</a> • <a href="/packs">Packs</a>
+    </p>
+
+    <h3 class="subsection-title">🏅 Related Achievements</h3>
+
+    <div class="achievement-table-container">
+        <table class="data-table achievements-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Extrovert</td><td>Finish a trade with someone</td><td>Cat Hunt</td></tr>
+                <tr><td>Introvert</td><td>Trade with yourself</td><td>Random</td></tr>
+                <tr><td>Desperate</td><td>Accept the trade with Cattito</td><td>Silly</td></tr>
+                <tr><td>Scammed</td><td>Get less value in a trade</td><td>Silly</td></tr>
+                <tr><td>Absolutely Nothing</td><td>Why did you do this?</td><td>Silly</td></tr>
+                <tr><td>Capitalism</td><td>Trade over 1k cats</td><td>Hard</td></tr>
+                <tr><td>Profit</td><td>Get 100+ more value in a trade</td><td>Hard</td></tr>
+                <tr><td>Blackhole</td><td>WHERE THE FU ARE WE</td><td>Hidden</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <h3 class="subsection-title">💡 Trading Trivia & Tips</h3>
+    <ul class="trivia-list">
+        <li><span>**Cattito's Offer:**</span> Trading with Cattito offers 9,999,999 eGirl cats (Value: 20,539,997,946). Accepting triggers the **"Desperate"** achievement, but Cattito **never accepts**.</li>
+        <li><span>**Item Safety:**</span> If items disappear from an inventory during a trade, Cattito says "Uh oh - some of the cats/prisms/packs/rains disappeared while trade was happening," which prevents the transaction from completing and stops debt.</li>
+        <li><span>**"Blackhole":**</span> Both users accepting the trade simultaneously can trigger the secret **"Blackhole"** achievement.</li>
+        <li><span>**Removing Items:**</span> To remove a cat or pack (but not rain or prisms) from your offer, enter a **negative number** in the amount field during the <code>Offer...</code> process.</li>
+        <li><span>**Rain Value:**</span> The minute value of Cat Rain was changed from 1100 → 900 on March 31, 2025.</li>
+    </ul>
+</div>

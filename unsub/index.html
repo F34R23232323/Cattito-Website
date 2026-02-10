@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" type="image/x-icon" href="/images/cat.ico">
+    <meta property="og:site_name" content="wow so shiny" />
+    <meta property="og:title" content="Cattito - Unsubscribe" />
+    <meta property="og:description" content="A cat has appeared! Catch it! Add Cat Hunt to your server with tons of cats, leaderboards, achievements, and much more!" />
+    <meta content="https://catbot.minkos.lol" property="og:url">
+    <meta content="https://wsrv.nl/?url=catbot.minkos.lol/images/cat.png" property="og:image">
+    <meta content="#6E593C" data-react-helmet="true" name="theme-color">
+    <title>Cattito - Manage Reminders</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define Theme Colors */
+        :root {
+            --primary-color: #FFC064; /* Cat-orange/gold */
+            --secondary-color: #6E593C; /* Earthy brown */
+            --background-dark: #2C3E50; /* Dark background */
+            --text-light: #ECF0F1;
+            --code-background: #34495E; /* Darker blue-gray for code blocks */
+            --border-radius: 8px;
+        }
+
+        /* Basic Reset and Layout */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Main Card Container */
+        .card {
+            background-color: #34495E; /* Slightly lighter than body for contrast */
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-top: 5px solid var(--primary-color);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-weight: 700;
+            font-size: 1.8em;
+        }
+
+        .message {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+        }
+
+        /* Copyable Command Style */
+        .copyable {
+            background-color: var(--code-background);
+            border: 2px solid var(--primary-color);
+            color: var(--text-light);
+            padding: 12px 20px;
+            margin: 10px auto;
+            border-radius: var(--border-radius);
+            font-family: monospace;
+            font-size: 1.1em;
+            cursor: copy; /* Indicate it's copyable */
+            display: block; /* Make it take up full width for easy clicking */
+            user-select: all; /* Allows easy selection on click/tap */
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .copyable:hover {
+            background-color: #4A6572;
+            transform: translateY(-1px);
+        }
+
+        .command-instruction {
+            margin: 15px 0;
+            padding: 5px 0;
+            border-top: 1px dashed rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        .note {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #bdc3c7;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Manage Your Cattito Reminders</h1>
+        <div class="message" id="message">
+            </div>
+        <p class="note">
+            The commands below must be sent to the **Cat Bot** in your **Direct Messages (DMs)** on Discord.
+        </p>
+    </div>
+
+    <script>
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                server_id: params.get('server_id'),
+                server_name: params.get('server_name')
+            };
+        }
+
+        function displayMessage() {
+            const { server_id, server_name } = getQueryParams();
+            const messageDiv = document.getElementById('message');
+            let content = '';
+
+            if (server_id && server_name) {
+                // Specific server unsubscribe message
+                content += `
+                    <div class="command-instruction">
+                        To stop **Cattlepass reminders** specifically for **${server_name}**:
+                        <span class="copyable">disable ${server_id}</span>
+                    </div>
+                `;
+            }
+
+            // General unsubscribe message
+            content += `
+                <div class="command-instruction">
+                    To disable **ALL reminders** (Cattlepass, Vote, etc.) across all servers:
+                    <span class="copyable">disable all</span>
+                </div>
+            `;
+
+            messageDiv.innerHTML = content;
+        }
+
+        window.onload = displayMessage;
+    </script>
+</body>
+
+</html>

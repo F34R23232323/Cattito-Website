@@ -1,0 +1,333 @@
+<style>
+    /* CSS Variables from previous responses for consistency */
+    :root {
+        --primary-color: #FFC064; /* Cat-orange/gold */
+        --secondary-color: #6E593C; /* Earthy brown */
+        --background-dark: #2C3E50; /* Dark background */
+        --text-light: #ECF0F1;
+        --text-accent: #FFD97D; /* Lighter accent for highlights */
+        --code-background: #34495E; /* Darker blue-gray for code blocks */
+        --shadow-dark: rgba(0, 0, 0, 0.4);
+        --border-radius: 12px;
+    }
+
+    /* Base Typography and Container */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-dark);
+        color: var(--text-light);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* --- Cat Packs Section Specific Styles --- */
+
+    .documentation-section {
+        padding: 20px 0;
+    }
+
+    .section-title {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-align: center;
+        font-family: 'Permanent Marker', cursive; 
+        color: var(--primary-color);
+    }
+
+    .subsection-title {
+        font-size: 1.8em;
+        color: var(--text-light);
+        margin-top: 35px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 5px;
+        font-family: 'Poppins', sans-serif; 
+        font-weight: 600;
+    }
+
+    .center-content {
+        text-align: center;
+        margin: 20px auto;
+        max-width: 900px;
+    }
+
+    .lead-text {
+        font-size: 1.1em;
+        color: #bdc3c7;
+        margin-bottom: 20px;
+    }
+
+    /* Data Table Styling (Pack Table) */
+    .data-table-container {
+        overflow-x: auto;
+        margin: 20px auto;
+        max-width: 100%;
+        border-radius: var(--border-radius);
+        box-shadow: 0 4px 10px var(--shadow-dark);
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #34495E;
+        min-width: 800px; /* Ensure table is wide enough for 6 columns */
+    }
+
+    .data-table th, .data-table td {
+        padding: 12px 15px;
+        text-align: center;
+        border: none;
+    }
+
+    .data-table th {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9em;
+    }
+
+    .data-table tbody tr {
+        border-bottom: 1px solid #4A6572;
+    }
+
+    .data-table tbody tr:nth-child(even) {
+        background-color: #394d63;
+    }
+
+    .data-table tbody tr:hover {
+        background-color: #4A6572;
+    }
+
+    .data-table td strong {
+        color: var(--text-accent);
+    }
+
+    .data-table td img {
+        display: block;
+        margin: 0 auto;
+        border-radius: 4px;
+    }
+
+    /* Formula Styling */
+    .formula-box {
+        background-color: #394d63;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 700px;
+        margin: 20px auto;
+        font-size: 1.1em;
+        text-align: center;
+    }
+    
+    .formula-box code {
+        display: block;
+        background-color: var(--code-background);
+        padding: 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+        font-family: monospace;
+        color: var(--text-accent);
+        overflow-x: auto;
+    }
+
+    /* Info Box */
+    .alert-info {
+        background-color: #5A7486;
+        border-left: 5px solid var(--text-accent);
+        padding: 15px;
+        border-radius: var(--border-radius);
+        margin: 25px auto;
+        max-width: 900px;
+        font-weight: 500;
+    }
+
+    /* Algorithm List (Simplified for this recap section) */
+    .algorithm-list {
+        list-style-type: none;
+        padding-left: 0;
+        max-width: 900px;
+        margin: 20px auto 30px;
+    }
+
+    .algorithm-list li {
+        position: relative;
+        padding: 8px 0 8px 25px;
+        margin-bottom: 5px;
+        border-left: 3px solid var(--secondary-color);
+    }
+    
+    .algorithm-list code {
+        background-color: var(--code-background);
+        padding: 2px 4px;
+        border-radius: 4px;
+        color: var(--text-accent);
+        font-family: monospace;
+    }
+    
+    /* Announcement Box */
+    .announcement-box {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 25px;
+        border-radius: var(--border-radius);
+        text-align: center;
+        margin: 40px auto;
+        max-width: 900px;
+        font-size: 1.2em;
+        font-weight: 700;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Trivia List (consistent with Trading section) */
+    .trivia-list {
+        list-style: none;
+        padding-left: 0;
+        max-width: 900px;
+        margin: 20px auto 40px;
+    }
+
+    .trivia-list li {
+        background-color: #34495E;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 6px;
+        font-size: 1.05em;
+        border-left: 4px solid var(--primary-color);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .trivia-list li span {
+        font-weight: 700;
+        color: var(--text-accent);
+        margin-right: 5px;
+    }
+</style>
+
+<div class="container documentation-section">
+    <h2 class="section-title">🎁 Cat Packs</h2>
+    <p class="lead-text center-content">
+        Packs are tiered reward bundles accessed via the <code style="background-color: var(--code-background); padding: 2px 5px; border-radius: 4px; color: var(--text-light);">/packs</code> command. Each pack starts at one of eight tiers and has a **30% chance to upgrade** its rarity every step, meaning even a Wooden Pack can potentially become a Celestial Pack!
+    </p>
+
+    <h3 class="subsection-title">Pack Value Table</h3>
+    <p class="center-content">
+        The Result Value is the theoretical average value of cats you can expect to receive after factoring in the 30% upgrade chance.
+    </p>
+    <div class="formula-box">
+        **Result Value Formula:**
+        <code>\text{Base Value} \times (1 - \text{Upgrade Chance}) + (\text{Upgrade Chance} \times \text{Result Value of the pack a rarity above})</code>
+    </div>
+
+    <div class="data-table-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Icon</th>
+                    <th>Old Icon</th>
+                    <th>Name</th>
+                    <th>Target Value (Trade)</th>
+                    <th>Base Value (Algorithm)</th>
+                    <th>Result Value (Average)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="/woodenpack.png" width="40" height="40" alt="Wooden Pack"></td>
+                    <td><img src="/cats_and_emojis/wood.png" width="40" height="40" alt="Old Wooden Icon"></td>
+                    <td><strong>Wooden</strong></td>
+                    <td>75</td>
+                    <td>65</td>
+                    <td>76.13</td>
+                </tr>
+                <tr>
+                    <td><img src="/stonepack.png" width="40" height="40" alt="Stone Pack"></td>
+                    <td><img src="/cats_and_emojis/stone.png" width="40" height="40" alt="Old Stone Icon"></td>
+                    <td><strong>Stone</strong></td>
+                    <td>100</td>
+                    <td>90</td>
+                    <td>102.08</td>
+                </tr>
+                <tr>
+                    <td><img src="/bronzepack.png" width="40" height="40" alt="Bronze Pack"></td>
+                    <td><img src="/cats_and_emojis/bronze.png" width="40" height="40" alt="Old Bronze Icon"></td>
+                    <td><strong>Bronze</strong></td>
+                    <td>130</td>
+                    <td>100</td>
+                    <td>130.28</td>
+                </tr>
+                <tr>
+                    <td><img src="/silverpack.png" width="40" height="40" alt="Silver Pack"></td>
+                    <td><img src="/cats_and_emojis/silver.png" width="40" height="40" alt="Old Silver Icon"></td>
+                    <td><strong>Silver</strong></td>
+                    <td>200</td>
+                    <td>115</td>
+                    <td>200.94</td>
+                </tr>
+                <tr>
+                    <td><img src="/goldpack.png" width="40" height="40" alt="Gold Pack"></td>
+                    <td><img src="/cats_and_emojis/gold.png" width="40" height="40" alt="Old Gold Icon"></td>
+                    <td><strong>Gold</strong></td>
+                    <td>400</td>
+                    <td>230</td>
+                    <td>401.48</td>
+                </tr>
+                <tr>
+                    <td><img src="/platinumpack.png" width="40" height="40" alt="Platinum Pack"></td>
+                    <td><img src="/cats_and_emojis/platinum.png" width="40" height="40" alt="Old Platinum Icon"></td>
+                    <td><strong>Platinum</strong></td>
+                    <td>800</td>
+                    <td>630</td>
+                    <td>801.6</td>
+                </tr>
+                <tr>
+                    <td><img src="/diamondpack.png" width="40" height="40" alt="Diamond Pack"></td>
+                    <td><img src="/cats_and_emojis/diamond.png" width="40" height="40" alt="Old Diamond Icon"></td>
+                    <td><strong>Diamond</strong></td>
+                    <td>1200</td>
+                    <td>860</td>
+                    <td>1202</td>
+                </tr>
+                <tr>
+                    <td><img src="/celestialpack.png" width="40" height="40" alt="Celestial Pack"></td>
+                    <td><img src="/cats_and_emojis/celestial.png" width="40" height="40" alt="Old Celestial Icon"></td>
+                    <td><strong>Celestial</strong></td>
+                    <td>2000</td>
+                    <td>2000</td>
+                    <td>2000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="alert-info center-content">
+        The value used for **trading packs** is the **Target Value**, not the Base or Result Values.
+    </div>
+
+    <h3 class="subsection-title">The Reward Algorithm (Recap)</h3>
+    <p class="center-content">This is a summary of the steps taken to determine the final reward when you open a pack:</p>
+    <ol class="algorithm-list">
+        <li>A pack starts with its initial rarity tier.</li>
+        <li>**Rarity Check:** There is a **70% chance** to keep the current rarity (proceed to step 3) or a **30% chance** to upgrade and repeat this step (unless it's Celestial).</li>
+        <li>Once the final rarity is chosen, its **Base Value** is fetched.</li>
+        <li>A random cat type is picked (1/22 chance each).</li>
+        <li>The number of cats is calculated: <code>Pack Base Value / Cat Type Value</code>.</li>
+        <li>The **whole number** of the result is guaranteed; the **fractional part** is the chance of receiving an extra cat.</li>
+        <li>If the result is less than 1, the reward falls back to **1 Fine cat**.</li>
+        <li>If the total reward is nothing, a special cutscene occurs for excitement!</li>
+    </ol>
+
+    <div class="announcement-box">
+        Packs were introduced in **Season 3 Cattlepass**! They replaced the old "5 random cats" reward with a Stone Pack to provide more valuable and exciting rewards.
+    </div>
+
+    <h3 class="subsection-title">💡 Packs Trivia</h3>
+    <ul class="trivia-list">
+        <li><span>**Release Date:**</span> Packs were added in the *Season 3 Cattlepass* (March 2025).</li>
+        <li><span>**Bulk Opening:**</span> Owning **10+ packs** enables the "Open all!" button for bulk opening, with confirmation.</li>
+        <li><span>**Icon Updates:**</span> The Platinum pack emoji was updated on March 31, 2025, to avoid confusion with Silver. Original sprites were hand-drawn by *Aflyde* and later redesigned by *TheTrashCell*.</li>
+    </ul>
+</div>

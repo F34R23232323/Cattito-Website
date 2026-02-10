@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="icon" type="image/x-icon" href="/images/cat.ico">
+    <meta property="og:site_name" content="wow so shiny" />
+    <meta property="og:title" content="Cattito" />
+    <meta property="og:description" content="A cat has appeared! Catch it! Add Cat Hunt to your server with tons of cats, leaderboards, achievements, and much more!" />
+    <meta content="https://cattito.fun" property="og:url">
+    <meta content="https://wsrv.nl/?url=catbot.minkos.lol/images/cat.png" property="og:image">
+    <meta content="#6E593C" data-react-helmet="true" name="theme-color">
+    <title>Cattito - The Cat Bot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset and Global Styles */
+        :root {
+            /* Cat Theme Colors */
+            --primary-color: #FFC064; /* A warm, inviting cat-orange/gold */
+            --secondary-color: #6E593C; /* A rich, earthy brown for contrast */
+            --background-dark: #2C3E50; /* Dark, non-black background */
+            --text-light: #ECF0F1; /* Light text for dark background */
+            --text-accent: #FFD97D; /* Lighter accent for highlights */
+            --shadow-light: rgba(255, 255, 255, 0.1);
+            --shadow-dark: rgba(0, 0, 0, 0.4);
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding-bottom: 50px; /* Space for the footer */
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: var(--text-accent);
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Permanent Marker', cursive; /* Fun, distinct header font */
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Header/Hero Section */
+        .hero {
+            padding: 60px 20px 40px;
+            background: linear-gradient(135deg, var(--secondary-color), #4A3B2A);
+            box-shadow: 0 4px 10px var(--shadow-dark);
+            margin-bottom: 30px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🐾'; /* Subtle cat paw background pattern */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 150px;
+            opacity: 0.05;
+            pointer-events: none;
+            line-height: 1;
+            transform: rotate(-15deg);
+        }
+
+        .hero-title {
+            font-size: 3.5em;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 0 var(--secondary-color);
+        }
+
+        .hero-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            color: var(--text-accent);
+            margin-bottom: 20px;
+        }
+
+        .header-image {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid var(--primary-color);
+            margin-bottom: 20px;
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        /* CTA Buttons */
+        .cta-buttons a {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 15px 30px;
+            border-radius: 50px; /* Pill shape */
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px var(--shadow-dark);
+            border: 2px solid transparent;
+        }
+
+        .cta-buttons a:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px var(--shadow-dark);
+            border: 2px solid var(--primary-color);
+        }
+
+        /* Marquee Alert */
+        .top-alert {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 5px 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        
+        /* Blink Animation */
+        .achievement-alert {
+            font-size: 1.1em;
+            font-weight: 600;
+            padding: 15px;
+            background-color: #34495E;
+            border-radius: var(--border-radius);
+            margin: 20px auto;
+            max-width: 800px;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .blink {
+            animation: blinker 1.5s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        /* Main Content Section */
+        .main-image {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 20px var(--shadow-dark);
+            margin: 30px 0;
+            border: 3px solid var(--primary-color);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+            margin: 20px auto 40px;
+            max-width: 600px;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #3E5469;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li span {
+            margin-right: 10px;
+            font-size: 1.2em;
+            color: var(--primary-color);
+        }
+
+        /* Guide Buttons - Grid Layout */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #34495E;
+            border-radius: var(--border-radius);
+            box-shadow: inset 0 0 10px var(--shadow-dark);
+        }
+
+        .button-grid a {
+            background-color: #4A6572; /* A cool contrast color */
+            color: var(--text-light);
+            padding: 15px 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px var(--shadow-dark);
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .button-grid a:hover {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            transform: scale(1.05) translateY(-2px);
+            border-bottom: 3px solid var(--secondary-color);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 20px;
+            border-top: 1px solid #3E5469;
+            background-color: #22303D;
+        }
+
+        .social-links img {
+            transition: transform 0.2s ease;
+            filter: invert(1); /* Invert to make the logos visible on dark background */
+        }
+
+        .social-links a:hover img {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 5px var(--primary-color)) invert(1);
+        }
+
+        .footer-links a {
+            margin: 0 10px;
+            font-size: 0.9em;
+            color: #7F8C8D;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-light);
+        }
+
+        .gray {
+            color: #7F8C8D;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-alert">
+        <marquee direction="right">CAT BOT YAY! 🎉 🥳 New Exotic Cats just added!</marquee>
+    </div>
+
+    <header class="hero text-center">
+        <img class="header-image" src="https://wsrv.nl/?url=catbot.minkos.lol/images/anibar.gif" alt="Cat Bot Animated Logo">
+        <h1 class="hero-title">Cattito</h1>
+        <p class="hero-subtitle">The Ultimate Discord Cat-Catching Bot</p>
+
+        <div class="cta-buttons">
+            <a href="https://discord.com/api/oauth2/authorize?client_id=1387860417706987590">
+                <span style="font-size:1.2em; vertical-align:middle;">➕</span> Invite Me!
+            </a>
+            <a href="http://cattito.fun/store">
+                <span style="font-size:1.2em; vertical-align:middle;">👑</span> Premium Store
+            </a>
+        </div>
+    </header>
+
+    <div class="container text-center">
+        
+        <div class="achievement-alert blink">
+            ✨ **Free Achievement!** Use the command: <code style="background:#4A6572; padding:3px 6px; border-radius:4px;">cat!i_like_cat_website</code> today!
+        </div>
+
+        <img src="/image (1).png" alt="Cat Bot in Action Screenshot" class="main-image"/>
+
+        <div style="max-width: 800px; margin: 0 auto; padding: 20px;">
+            <h2>What is Cattito?</h2>
+            <p style="font-size: 1.1em; color: var(--text-light); margin-bottom: 20px;">
+                Periodically, **rare cats spawn** in the channel of your choice. Be the **fastest** to type <code style="background:#4A6572; padding:2px 4px; border-radius:3px;">cat</code> in chat to catch them and add them to your collection! This bot keeps your server **active and engaging**!
+            </p>
+            
+            <h3>Once you've caught a cat, you can:</h3>
+            <ul class="feature-list">
+                <li><span>💻</span> View your extensive **cat inventory** and collection.</li>
+                <li><span>🏅</span> Climb the **leaderboards** for cats caught, fastest catch times, and more.</li>
+                <li><span>🤓</span> Unlock various challenging and fun **achievements**.</li>
+                <li><span>🔝</span> Advance through our totally not scuffed **Cattlespass™** for exclusive rewards.</li>
+                <li><span>✨</span> And much, much more!</li>
+            </ul>
+        </div>
+
+        <div class="button-grid">
+            <a href="/pack">📦 Cat Packs</a>
+            <a href="/prisms">💎 Prisms & Shards</a>
+            <a href="/trading">🤝 Trading Cats</a>
+            <a href="/gambling">🎰 Catsino</a>
+            <a href="/gambling">🎲 Roulette Table</a>
+            <a href="/dark">⚫ Dark Market</a>
+            <a href="/commands">⚙️ Bot Commands</a>
+            <a href="/cattypes">🐈 Cat Types</a>
+            <a href="/achievements">🏆 Achievements</a>
+        </div>
+    </div>
+
+    <footer class="footer text-center">
+        <div class="social-links">
+            <a href="https://discord.gg/tshe"><img height=30 src="/images/discord-mark-black.svg" alt="Discord Server"></a>
+            <a href="https://github.com/milenakos/cat-bot"><img height=30 src="/images/github-mark.svg" alt="GitHub Repository"></a>
+        </div>
+        <br>
+        <div class="gray">
+            © Xyron Development, 2026. All lefts aren't reserved.
+        </div>
+        <div class="footer-links">
+            <a href="/pp" class="gray">Privacy Policy</a>
+            •
+            <a href="/terms" class="gray">Terms of Service</a>
+        </div>
+    </footer>
+</body>
+
+</html>

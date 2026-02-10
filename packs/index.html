@@ -1,0 +1,260 @@
+<style>
+    /* CSS Variables from previous responses for consistency */
+    :root {
+        --primary-color: #FFC064; /* Cat-orange/gold */
+        --secondary-color: #6E593C; /* Earthy brown */
+        --background-dark: #2C3E50; /* Dark background */
+        --text-light: #ECF0F1;
+        --text-accent: #FFD97D; /* Lighter accent for highlights */
+        --code-background: #34495E; /* Darker blue-gray for code blocks */
+        --shadow-dark: rgba(0, 0, 0, 0.4);
+        --border-radius: 12px;
+    }
+
+    /* Base Typography and Container */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-dark);
+        color: var(--text-light);
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    /* --- Packs Section Specific Styles --- */
+
+    .documentation-section {
+        padding: 20px 0;
+    }
+
+    .section-title {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-align: center;
+        font-family: 'Permanent Marker', cursive; 
+        color: var(--primary-color);
+    }
+
+    .subsection-title {
+        font-size: 1.8em;
+        color: var(--text-light);
+        margin-top: 35px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 5px;
+        font-family: 'Poppins', sans-serif; 
+        font-weight: 600;
+    }
+
+    .packs-mechanic-card {
+        background-color: #34495E;
+        padding: 30px;
+        border-radius: var(--border-radius);
+        box-shadow: 0 5px 15px var(--shadow-dark);
+        max-width: 900px;
+        margin: 30px auto;
+    }
+
+    /* Step-by-Step List Styling */
+    .mechanic-steps {
+        list-style-type: none;
+        counter-reset: pack-step-counter;
+        padding-left: 0;
+    }
+
+    .mechanic-steps > li {
+        counter-increment: pack-step-counter;
+        position: relative;
+        padding: 15px 20px 15px 50px;
+        margin-bottom: 15px;
+        background-color: #394d63; /* Slight contrast for each step */
+        border-radius: 8px;
+        border-left: 5px solid var(--primary-color);
+    }
+
+    .mechanic-steps > li::before {
+        content: counter(pack-step-counter);
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        width: 30px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.2em;
+        border-top-left-radius: 8px;
+        border-bottom-left-radius: 8px;
+    }
+
+    .mechanic-steps ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 10px;
+    }
+
+    .mechanic-steps ul li {
+        padding: 5px 0;
+        border-left: 2px solid #5A7486;
+        padding-left: 10px;
+    }
+    
+    .mechanic-steps strong {
+        color: var(--text-accent);
+    }
+    
+    /* Table Styling (Consistent with Trading section) */
+    .data-table-container {
+        overflow-x: auto;
+        margin: 20px 0;
+        border-radius: var(--border-radius);
+        box-shadow: 0 4px 10px var(--shadow-dark);
+    }
+
+    .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #34495E;
+        min-width: 300px;
+    }
+
+    .data-table th, .data-table td {
+        padding: 12px 15px;
+        text-align: left;
+        border: none;
+    }
+
+    .data-table th {
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9em;
+    }
+
+    .data-table tbody tr {
+        border-bottom: 1px solid #4A6572;
+    }
+
+    .data-table tbody tr:nth-child(even) {
+        background-color: #394d63;
+    }
+
+    .data-table td:nth-child(2) {
+        font-weight: 600; 
+        color: var(--text-accent);
+    }
+    
+    .fractional-example {
+        background-color: #4A6572;
+        padding: 10px;
+        border-radius: 6px;
+        margin-top: 10px;
+    }
+    
+    .fractional-example code {
+        background-color: var(--secondary-color);
+        padding: 2px 5px;
+        border-radius: 4px;
+        color: var(--text-accent);
+        font-family: monospace;
+    }
+
+</style>
+
+<div class="container documentation-section">
+    <h1 class="section-title">📦 Cattito Packs Mechanics</h1>
+    <p class="lead-text" style="max-width: 900px; margin: 0 auto 20px;">
+        Packs are guaranteed sources of cats. This is the **internal mechanic** detailing how the pack rarity is determined and how many cats you receive upon opening.
+    </p>
+
+    <div class="packs-mechanic-card">
+        <h3 class="subsection-title" style="margin-top: 0; border: none; padding-bottom: 0;">Opening a Pack: Step-by-Step</h3>
+        
+        <ol class="mechanic-steps">
+            <li>
+                A pack starts with some **specific rarity** (e.g., a "Wooden Pack" starts at Wooden rarity).
+            </li>
+            <li>
+                **Rarity Upgrade Chance:** The pack's rarity is determined through a loop:
+                <ul>
+                    <li>**70% chance:** The current rarity becomes the **final pack rarity**. Proceed to Step 3.</li>
+                    <li>**30% chance:** The pack is **upgraded by one rarity** and Step 2 is repeated. (Note: Celestial is the maximum rarity and cannot be upgraded further).</li>
+                </ul>
+            </li>
+            <li>
+                Once the final rarity is chosen, get its **Base Value** from the table below:
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Pack Rarity</th>
+                                <th>Base Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Wooden</td><td>65</td></tr>
+                            <tr><td>Stone</td><td>90</td></tr>
+                            <tr><td>Bronze</td><td>100</td></tr>
+                            <tr><td>Silver</td><td>115</td></tr>
+                            <tr><td>Gold</td><td>230</td></tr>
+                            <tr><td>Platinum</td><td>630</td></tr>
+                            <tr><td>Diamond</td><td>860</td></tr>
+                            <tr><td>Celestial</td><td>2000</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                A random **Cat Type** is picked. Every cat type has the same chance of being chosen: **1/22**.
+            </li>
+            <li>
+                The result number of cats to reward is calculated: <code>Pack Base Value / Cat Type Value</code>.
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Cat Type</th>
+                                <th>Value</th>
+                                <th>Cat Type</th>
+                                <th>Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Fine</td><td>4.1</td><td>Trash</td><td>82.16</td></tr>
+                            <tr><td>Nice</td><td>5.48</td><td>Legendary</td><td>117.37</td></tr>
+                            <tr><td>Good</td><td>8.22</td><td>Mythic</td><td>164.32</td></tr>
+                            <tr><td>Rare</td><td>11.74</td><td>8bit</td><td>205.4</td></tr>
+                            <tr><td>Wild</td><td>14.94</td><td>Corrupt</td><td>273.87</td></tr>
+                            <tr><td>Baby</td><td>17.86</td><td>Professor</td><td>410.8</td></tr>
+                            <tr><td>Epic</td><td>20.54</td><td>Divine</td><td>513.5</td></tr>
+                            <tr><td>Sus</td><td>23.47</td><td>Real</td><td>821.6</td></tr>
+                            <tr><td>Brave</td><td>27.39</td><td>Ultimate</td><td>1369.33</td></tr>
+                            <tr><td>Rickroll</td><td>32.86</td><td>eGirl</td><td>2054</td></tr>
+                            <tr><td>Reverse</td><td>41.08</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                            <tr><td>Superior</td><td>51.35</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </li>
+            <li>
+                The **whole part** of the result number is the guaranteed reward.
+            </li>
+            <li>
+                The **fractional part** represents the chance of getting one *additional* cat.
+                <div class="fractional-example">
+                    **Example:** If the result is <code>42.69</code>, you are guaranteed **42 cats**. You will receive an extra cat (**43 total**) in **69% of cases**, and **42** in the remaining 31%.
+                </div>
+            </li>
+            <li>
+                **Fallback:** If the result reward is nothing (i.e., less than 1), the reward falls back to **1 Fine cat**.
+            </li>
+        </ol>
+    </div>
+</div>

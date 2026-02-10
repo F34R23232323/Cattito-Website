@@ -1,0 +1,68 @@
+<style>
+    /* CSS Variables from previous responses for consistency */
+    :root {
+        --primary-color: #FFC064; /* Cat-orange/gold */
+        --secondary-color: #6E593C; /* Earthy brown */
+        --background-dark: #2C3E50; /* Dark background */
+        --text-light: #ECF0F1;
+        --text-accent: #FFD97D; /* Lighter accent for highlights */
+        --code-background: #34495E; /* Darker blue-gray for code blocks */
+        --shadow-dark: rgba(0, 0, 0, 0.4);
+        --border-radius: 12px;
+    }
+
+    /* --- Navigation Footer Styles --- */
+
+    .footer-nav {
+        max-width: 1200px;
+        margin: 40px auto 20px auto;
+        padding: 20px;
+        text-align: center;
+        background-color: var(--code-background); /* Darker gray-blue */
+        border-radius: var(--border-radius);
+        box-shadow: 0 -5px 15px var(--shadow-dark);
+        border-top: 2px solid var(--secondary-color);
+    }
+
+    .footer-nav a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-size: 1.1em;
+        font-weight: 600;
+        padding: 10px 15px;
+        margin: 0 15px;
+        display: inline-block;
+        transition: color 0.3s ease, background-color 0.3s ease;
+        border-radius: 6px;
+    }
+
+    .footer-nav a:hover {
+        color: var(--secondary-color);
+        background-color: var(--text-accent);
+        text-decoration: underline;
+    }
+
+    .footer-nav br {
+        display: none; /* Hide original break tags */
+    }
+
+    @media (max-width: 600px) {
+        .footer-nav {
+            padding: 15px 10px;
+        }
+        .footer-nav a {
+            display: block;
+            margin: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 0;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="footer-nav">
+        <a href="/terms">📄 Terms of Service</a>
+        <a href="/pp">🔒 Privacy Policy</a>
+        <a href="/packs">📦 Pack Chances</a>
+    </div>
+</div>  
