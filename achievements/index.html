@@ -1,88 +1,589 @@
-<h2>Achievements</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cattito Achievements Wiki</title>
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+    /* CSS Variables for the dark theme */
+    :root {
+        --primary-color: #FFC064; /* Cat-orange/gold for accents */
+        --secondary-color: #6E593C; /* Earthy brown for borders/minor accents */
+        --background-dark: #2C3E50; /* Dark blue-gray background */
+        --content-background: #34495E; /* Darker blue-gray for the main content box */
+        --text-light: #ECF0F1;
+        --text-accent: #FFD97D; /* Lighter accent for highlights */
+        --code-background: #4A6572; /* Slightly lighter blue-gray for code */
+        --shadow-dark: rgba(0, 0, 0, 0.4);
+        --border-radius: 12px;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Base Typography and Container */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--background-dark);
+        color: var(--text-light);
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* Header Navigation */
+    header {
+        background: linear-gradient(135deg, #34495E 0%, #2C3E50 100%);
+        border-bottom: 3px solid var(--primary-color);
+        box-shadow: 0 5px 20px var(--shadow-dark);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        min-height: 70px;
+    }
+
+    /* Logo/Title */
+    .header-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
+
+    .header-logo:hover {
+        transform: scale(1.05);
+    }
+
+    .header-logo h1 {
+        font-family: 'Permanent Marker', cursive;
+        color: var(--primary-color);
+        font-size: 1.8em;
+        margin: 0;
+    }
+
+    .header-logo-emoji {
+        font-size: 1.8em;
+        display: inline-block;
+    }
+
+    /* Navigation Menu */
+    nav {
+        display: flex;
+        gap: 30px;
+        align-items: center;
+    }
+
+    nav a {
+        color: var(--text-light);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.95em;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+        color: var(--primary-color);
+    }
+
+    nav a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+        width: 100%;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--primary-color);
+        font-size: 1.5em;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .menu-toggle:hover {
+        color: var(--text-accent);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            background-color: #2C3E50;
+            gap: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        nav.active {
+            max-height: 300px;
+        }
+
+        nav a {
+            padding: 15px 20px;
+            border-bottom: 1px solid #3A556B;
+            width: 100%;
+        }
+
+        nav a::after {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: block;
+        }
+
+        .header-logo h1 {
+            font-size: 1.4em;
+        }
+
+        .header-container {
+            min-height: 60px;
+        }
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: var(--content-background);
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 30px var(--shadow-dark);
+        border-top: 5px solid var(--primary-color);
+    }
+
+    /* Headers */
+    h1 {
+        font-family: 'Permanent Marker', cursive;
+        color: var(--primary-color);
+        font-size: 2.5em;
+        text-align: center;
+        margin-bottom: 5px;
+        border-bottom: 2px solid var(--secondary-color);
+        padding-bottom: 10px;
+    }
+
+    h2, h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.4em;
+        color: var(--text-accent);
+        margin-top: 30px;
+        margin-bottom: 10px;
+        padding-left: 10px;
+        border-left: 4px solid var(--secondary-color);
+        font-weight: 600;
+    }
+
+    h4 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.15em;
+        color: var(--text-accent);
+        margin-top: 25px;
+        margin-bottom: 15px;
+        padding-left: 10px;
+        border-left: 4px solid var(--secondary-color);
+        font-weight: 600;
+    }
+    
+    /* General Text and Links */
+    p {
+        margin-bottom: 15px;
+        padding-left: 10px;
+    }
+    
+    strong {
+        color: var(--text-accent);
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: var(--text-accent);
+        text-decoration: underline;
+    }
+
+    ul {
+        margin-top: 5px;
+        padding-left: 40px;
+        list-style: disc;
+    }
+    
+    ul li {
+        margin-bottom: 5px;
+    }
+
+    code {
+        background: #2C3E50; 
+        color: var(--text-accent);
+        padding: 4px 6px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.95em;
+    }
+
+    /* Warning box */
+    .is-warning {
+        background-color: #3A536B;
+        border-left: 5px solid var(--primary-color);
+        padding: 15px;
+        border-radius: 4px;
+        margin: 15px 0;
+        font-style: italic;
+    }
+
+    /* --- Table Styles --- */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 0.9em;
+        text-align: left;
+        background-color: #2C3E50;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0 5px 15px var(--shadow-dark);
+    }
+
+    thead tr {
+        background-color: var(--primary-color);
+        color: var(--background-dark);
+        text-align: center;
+        font-weight: 700;
+    }
+
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #4A6572;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    tbody tr {
+        border-bottom: 1px solid #4A6572;
+        transition: background-color 0.2s ease;
+    }
+
+    tbody tr:nth-of-type(even) {
+        background-color: #34495E;
+    }
+
+    tbody tr:hover {
+        background-color: #4A6572;
+    }
+
+    tbody tr:last-of-type {
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    /* Responsive table for smaller screens */
+    @media (max-width: 768px) {
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+
+        td {
+            border: none;
+            position: relative;
+            padding-left: 50%;
+            text-align: right;
+            border-bottom: 1px solid #4A6572;
+        }
+
+        td::before {
+            content: attr(data-label);
+            position: absolute;
+            left: 0;
+            width: 45%;
+            padding-left: 15px;
+            font-weight: bold;
+            text-align: left;
+            color: var(--text-accent);
+        }
+    }
+
+    /* Category summary */
+    .category-summary {
+        background-color: #3A536B;
+        border-left: 4px solid var(--primary-color);
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 4px;
+        color: var(--text-light);
+    }
+
+    .category-summary strong {
+        color: var(--primary-color);
+    }
+
+    
+</style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <a href="/" class="header-logo">
+            <span class="header-logo-emoji">🐱</span>
+            <h1>Cattito Wiki</h1>
+        </a>
+        <nav id="navMenu">
+            <a href="/">Home</a>
+            <a href="/cat-types">Cat Types</a>
+            <a href="/achievements">Achievements</a>
+            <a href="/dark-market">Dark Market</a>
+            <a href="/commands">Commands</a>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+</header>
+
+<div class="container">
+
+<h1>Achievements Wiki</h1>
+
+<h2>Achievement System</h2>
 <p>Cattito's achievement system tracks your progress, from catching cats to completing storylines and performing various commands or actions. Use <code>/achievements</code> to view your achievements and categories. Hidden achievements only appear once unlocked, e.g., "69/90 + 5".</p>
 
 <h3>Categories (95 achievements)</h3>
-<ul>
-<li><strong>Cat Hunt</strong> - 17 achievements: story and cat-catching related</li>
-<li><strong>Commands</strong> - 12 achievements: run commands to earn achievements</li>
-<li><strong>Random</strong> - 17 achievements: fun/joke achievements</li>
-<li><strong>Silly</strong> - 24 achievements: funny achievements, sometimes more difficult</li>
-<li><strong>Hard</strong> - 20 achievements: challenging, requiring effort, time, luck</li>
-<li><strong>Hidden</strong> - 5 achievements: extremely difficult/unexpected actions</li>
-</ul>
+<div class="category-summary">
+    <strong>Cat Hunt</strong> - 17 achievements: story and cat-catching related
+</div>
+<div class="category-summary">
+    <strong>Commands</strong> - 12 achievements: run commands to earn achievements
+</div>
+<div class="category-summary">
+    <strong>Random</strong> - 17 achievements: fun/joke achievements
+</div>
+<div class="category-summary">
+    <strong>Silly</strong> - 24 achievements: funny achievements, sometimes more difficult
+</div>
+<div class="category-summary">
+    <strong>Hard</strong> - 20 achievements: challenging, requiring effort, time, luck
+</div>
+<div class="category-summary">
+    <strong>Hidden</strong> - 5 achievements: extremely difficult/unexpected actions
+</div>
 
-<h3>All Achievements</h3>
-<p class="is-warning">Spoilers ahead! Viewing may ruin the fun but can help with tricky achievements.</p>
+<p class="is-warning">⚠️ Spoilers ahead! Viewing may ruin the fun but can help with tricky achievements.</p>
 
-<h4>Cat Hunt</h4>
+<h3>Cat Hunt (17 achievements)</h3>
+<div class="table-wrapper">
+<table border="1" cellpadding="5" cellspacing="0">
+<thead>
+<tr>
+<th>Title</th>
+<th>Description</th>
+<th>How to achieve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="Title"><strong>First cat!</strong></td>
+<td data-label="Description">the journey begins...</td>
+<td data-label="How to achieve">Catch a cat by saying "cat" when it appears.</td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Pro Catcher</strong></td>
+<td data-label="Description">get 100 cats</td>
+<td data-label="How to achieve">Have 100+ cats and run <code>/inventory</code></td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Overpopulated</strong></td>
+<td data-label="Description">get 1000 cats</td>
+<td data-label="How to achieve">Have 1000+ cats and run <code>/inventory</code></td>
+</tr>
+<tr>
+<td data-label="Title"><strong>And they don't stop coming</strong></td>
+<td data-label="Description">get 10000 cats</td>
+<td data-label="How to achieve">Have 10000+ cats and run <code>/inventory</code></td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Gifter</strong></td>
+<td data-label="Description"><code>/gift</code> your cats to someone</td>
+<td data-label="How to achieve">Run <code>/gift</code> and choose a user to gift cats.</td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Anti-Gifter</strong></td>
+<td data-label="Description">get <code>/gift</code>-ed</td>
+<td data-label="How to achieve">Be gifted by someone using <code>/gift</code></td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Extrovert</strong></td>
+<td data-label="Description">finish a <code>/trade</code></td>
+<td data-label="How to achieve">Trade with someone and both accept.</td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Fast Catcher</strong></td>
+<td data-label="Description">catch a cat in under 5 seconds</td>
+<td data-label="How to achieve">Catch a cat within 5 seconds of spawn.</td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Slow Catcher</strong></td>
+<td data-label="Description">catch a cat in over an hour</td>
+<td data-label="How to achieve">Catch a cat after an hour.</td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Collecter</strong></td>
+<td data-label="Description">get all cat types</td>
+<td data-label="How to achieve">Have all 22 cat types, then run <code>/inventory</code> or craft a prism.</td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Trolled</strong></td>
+<td data-label="Description">TROLLED SO HARD LMAOOO 😂</td>
+<td data-label="How to achieve">Run <code>/fake</code></td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Achiever</strong></td>
+<td data-label="Description">get 15 achievements</td>
+<td data-label="How to achieve">Obtain 15 non-hidden achievements and run <code>/achievements</code></td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Leader</strong></td>
+<td data-label="Description">reach top 5 in any leaderboard</td>
+<td data-label="How to achieve">Be top 5 in a leaderboard and run <code>/leaderboards</code></td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Shady Corner</strong></td>
+<td data-label="Description">follow the shadow</td>
+<td data-label="How to achieve">After 20 Fine cats, follow the cutscene and check Hidden achievements (see Dark Market).</td>
+</tr>
+<tr>
+<td data-label="Title"><strong>That's quite new</strong></td>
+<td data-label="Description">read the news</td>
+<td data-label="How to achieve">Run <code>/news</code></td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Boosted</strong></td>
+<td data-label="Description">get boosted by a prism</td>
+<td data-label="How to achieve">Have your cat catch boosted by a prism.</td>
+</tr>
+<tr>
+<td data-label="Title"><strong>Thanks For Playing (Cataine Addict)</strong></td>
+<td data-label="Description">Complete the story (Defeat the dog mafia)</td>
+<td data-label="How to achieve">Purchase Cataine 10 times, then complete the story sequence (see Dark Market).</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3>Commands (12 achievements)</h3>
+<div class="table-wrapper">
 <table border="1" cellpadding="5" cellspacing="0">
 <thead>
 <tr><th>Title</th><th>Description</th><th>How to achieve</th></tr>
 </thead>
 <tbody>
-<tr><td>First cat!</td><td>the journey begins...</td><td>Catch a cat by saying "cat" when it appears.</td></tr>
-<tr><td>Pro Catcher</td><td>get 100 cats</td><td>Have 100+ cats and run <code>/inventory</code></td></tr>
-<tr><td>Overpopulated</td><td>get 1000 cats</td><td>Have 1000+ cats and run <code>/inventory</code></td></tr>
-<tr><td>And they don't stop coming</td><td>get 10000 cats</td><td>Have 10000+ cats and run <code>/inventory</code></td></tr>
-<tr><td>Gifter</td><td><code>/gift</code> your cats to someone</td><td>Run <code>/gift</code> and choose a user to gift cats.</td></tr>
-<tr><td>Anti-Gifter</td><td>get <code>/gift</code>-ed</td><td>Be gifted by someone using <code>/gift</code></td></tr>
-<tr><td>Extrovert</td><td>finish a <code>/trade</code></td><td>Trade with someone and both accept.</td></tr>
-<tr><td>Fast Catcher</td><td>catch a cat in under 5 seconds</td><td>Catch a cat within 5 seconds of spawn.</td></tr>
-<tr><td>Slow Catcher</td><td>catch a cat in over an hour</td><td>Catch a cat after an hour.</td></tr>
-<tr><td>Collecter</td><td>get all cat types</td><td>Have all 22 cat types, then run <code>/inventory</code> or craft a prism.</td></tr>
-<tr><td>Trolled</td><td>TROLLED SO HARD LMAOOO :joy:</td><td>Run <code>/fake</code></td></tr>
-<tr><td>Achiever</td><td>get 15 achievements</td><td>Obtain 15 non-hidden achievements and run <code>/achievements</code></td></tr>
-<tr><td>Leader</td><td>reach top 5 in any leaderboard</td><td>Be top 5 in a leaderboard and run <code>/leaderboards</code></td></tr>
-<tr><td>Shady Corner</td><td>follow the shadow</td><td>After 20 Fine cats, follow the cutscene and check Hidden achievements (see <a href="/dark-market">Dark Market</a>).</td></tr>
-<tr><td>That's quite new</td><td>read the news</td><td>Run <code>/news</code></td></tr>
-<tr><td>Boosted</td><td>get boosted by a prism</td><td>Have your cat catch boosted by a prism.</td></tr>
-<tr><td>Thanks For Playing (Cataine Addict)</td><td>Complete the story (Defeat the dog mafia)</td><td>Purchase Cataine 10 times, then complete the story sequence (see <a href="/dark-market">Dark Market</a>).</td></tr>
+<tr><td data-label="Title"><strong>Randomizer</strong></td><td data-label="Description">look at a random cat</td><td data-label="How to achieve">Run <code>/random</code></td></tr>
+<tr><td data-label="Title"><strong>Daily Catter</strong></td><td data-label="Description">get daily cats</td><td data-label="How to achieve">Run <code>/daily</code></td></tr>
+<tr><td data-label="Title"><strong>Car</strong></td><td data-label="Description">🚗🚗</td><td data-label="How to achieve">Say "car"</td></tr>
+<tr><td data-label="Title"><strong>Cought in 4k</strong></td><td data-label="Description">catch someone in 4k</td><td data-label="How to achieve">Use the catch command on a message in 4k</td></tr>
+<tr><td data-label="Title"><strong>Brew Coffee</strong></td><td data-label="Description">nevermind im a teapot</td><td data-label="How to achieve">Run <code>/brew</code></td></tr>
+<tr><td data-label="Title"><strong>Reminder</strong></td><td data-label="Description">set a reminder</td><td data-label="How to achieve">Run <code>/remind</code></td></tr>
+<tr><td data-label="Title"><strong>Balling</strong></td><td data-label="Description">ball ball ball...</td><td data-label="How to achieve">Run <code>/8ball</code></td></tr>
+<tr><td data-label="Title"><strong>More gambling??</strong></td><td data-label="Description">spin the <code>/slots</code> machine</td><td data-label="How to achieve">Run <code>/slots</code> and spin</td></tr>
+<tr><td data-label="Title"><strong>Pro Gambler</strong></td><td data-label="Description">win at <code>/slots</code></td><td data-label="How to achieve">Get all emojis in the middle row the same</td></tr>
+<tr><td data-label="Title"><strong>Definer</strong></td><td data-label="Description">find a definition</td><td data-label="How to achieve">Run <code>/define</code> with an English word</td></tr>
+<tr><td data-label="Title"><strong>Cookie Clicker</strong></td><td data-label="Description">click a cookie</td><td data-label="How to achieve">Run <code>/cookie</code> and press the button</td></tr>
+<tr><td data-label="Title"><strong>Roulette Winner</strong></td><td data-label="Description">win at <code>/roulette</code></td><td data-label="How to achieve">Run <code>/roulette</code> and win</td></tr>
 </tbody>
 </table>
+</div>
 
-<h4>Commands</h4>
+<h3>Random (17 achievements)</h3>
+<div class="table-wrapper">
 <table border="1" cellpadding="5" cellspacing="0">
 <thead>
 <tr><th>Title</th><th>Description</th><th>How to achieve</th></tr>
 </thead>
 <tbody>
-<tr><td>Randomizer</td><td>look at a random cat</td><td>Run <code>/random</code></td></tr>
-<tr><td>Daily Catter</td><td>get daily cats</td><td>Run <code>/daily</code></td></tr>
-<tr><td>Car</td><td>🚗🚗</td><td>Say “car”</td></tr>
-<tr><td>Cought in 4k</td><td>catch someone in 4k</td><td>Use the catch command on a message in 4k</td></tr>
-<tr><td>Brew Coffee</td><td>nevermind im a teapot</td><td>Run <code>/brew</code></td></tr>
-<tr><td>Reminder</td><td>set a reminder</td><td>Run <code>/remind</code></td></tr>
-<tr><td>Balling</td><td>ball ball ball...</td><td>Run <code>/8ball</code></td></tr>
-<tr><td>More gambling??</td><td>spin the <code>/slots</code> machine</td><td>Run <code>/slots</code> and spin</td></tr>
-<tr><td>Pro Gambler</td><td>win at <code>/slots</code></td><td>Get all emojis in the middle row the same</td></tr>
-<tr><td>Definer</td><td>find a definition</td><td>Run <code>/define</code> with an English word</td></tr>
-<tr><td>Cookie Clicker</td><td>click a cookie</td><td>Run <code>/cookie</code> and press the button</td></tr>
-<tr><td>Roulette Winner</td><td>win at <code>/roulette</code></td><td>Run <code>/roulette</code> and win</td></tr>
+<tr><td data-label="Title"><strong>Pineapple</strong></td><td data-label="Description">you said "pineapple"</td><td data-label="How to achieve">Say "pineapple"</td></tr>
+<tr><td data-label="Title"><strong>DM</strong></td><td data-label="Description">dm cat</td><td data-label="How to achieve">Say "lol_i_have_dmed_the_cat_bot_and_got_an_ach"</td></tr>
+<tr><td data-label="Title"><strong>Who Ping</strong></td><td data-label="Description">ping Cattito</td><td data-label="How to achieve">Say <code>&lt;@966695034340663367&gt;</code></td></tr>
+<tr><td data-label="Title"><strong>Introvert</strong></td><td data-label="Description"><code>/trade</code> with yourself</td><td data-label="How to achieve">Run <code>/trade</code> and choose yourself</td></tr>
+<tr><td data-label="Title"><strong>Please do not the cat</strong></td><td data-label="Description">reject cat</td><td data-label="How to achieve">Say "please do not the cat"</td></tr>
+<tr><td data-label="Title"><strong>Please do the cat</strong></td><td data-label="Description">accept cat</td><td data-label="How to achieve">Say "please do the cat"</td></tr>
+<tr><td data-label="Title"><strong>Cat Worshipper</strong></td><td data-label="Description">have both 🛐 and 🐱</td><td data-label="How to achieve">Include both emojis in your message</td></tr>
+<tr><td data-label="Title"><strong>Test Achievement</strong></td><td data-label="Description">testing testing 1 2 3</td><td data-label="How to achieve">Say "testing testing 1 2 3" or "cat!ach"</td></tr>
+<tr><td data-label="Title"><strong>Curious</strong></td><td data-label="Description">click private button</td><td data-label="How to achieve">Click buttons not meant for you</td></tr>
+<tr><td data-label="Title"><strong>???</strong></td><td data-label="Description">cat???</td><td data-label="How to achieve">Say "cat?"</td></tr>
+<tr><td data-label="Title"><strong>Not Quite</strong></td><td data-label="Description">wrong animal</td><td data-label="How to achieve">Say "dog"</td></tr>
+<tr><td data-label="Title"><strong>Website User</strong></td><td data-label="Description">catbot.minkos.lol</td><td data-label="How to achieve">Say "cat!i_like_cat_website"</td></tr>
+<tr><td data-label="Title"><strong>Sussy</strong></td><td data-label="Description">call out sus cat</td><td data-label="How to achieve">Say "sus", "amog", "among", "impost", "amogus", or "report"</td></tr>
+<tr><td data-label="Title"><strong>Electronic Grill</strong></td><td data-label="Description">love some eGrills</td><td data-label="How to achieve">Say "egril"</td></tr>
+<tr><td data-label="Title"><strong>Bwomp</strong></td><td data-label="Description">funny TikTok sound</td><td data-label="How to achieve">Run <code>/tiktok</code> with text "bwomp"</td></tr>
+<tr><td data-label="Title"><strong>Pig Master</strong></td><td data-label="Description">Get 50+ score in /pig</td><td data-label="How to achieve">Run <code>/pig</code> and score 50+</td></tr>
+<tr><td data-label="Title"><strong>Failed Gambler</strong></td><td data-label="Description">Get negative cat dollars</td><td data-label="How to achieve">Lose enough in <code>/roulette</code> to go negative</td></tr>
 </tbody>
 </table>
+</div>
 
-<h4>Random</h4>
-<table border="1" cellpadding="5" cellspacing="0">
-<thead>
-<tr><th>Title</th><th>Description</th><th>How to achieve</th></tr>
-</thead>
-<tbody>
-<tr><td>Pineapple</td><td>you said "pineapple"</td><td>Say “pineapple”</td></tr>
-<tr><td>DM</td><td>dm cat</td><td>Say "lol_i_have_dmed_the_cat_bot_and_got_an_ach"</td></tr>
-<tr><td>Who Ping</td><td>ping Cattito</td><td>Say <code>&lt;@966695034340663367&gt;</code></td></tr>
-<tr><td>Introvert</td><td><code>/trade</code> with yourself</td><td>Run <code>/trade</code> and choose yourself</td></tr>
-<tr><td>Please do not the cat</td><td>reject cat</td><td>Say "please do not the cat"</td></tr>
-<tr><td>Please do the cat</td><td>accept cat</td><td>Say “please do the cat”</td></tr>
-<tr><td>Cat Worshipper</td><td>have both 🛐 and 🐱</td><td>Include both emojis in your message</td></tr>
-<tr><td>Test Achievement</td><td>testing testing 1 2 3</td><td>Say “testing testing 1 2 3” or "cat!ach"</td></tr>
-<tr><td>Curious</td><td>click private button</td><td>Click buttons not meant for you</td></tr>
-<tr><td>???</td><td>cat???</td><td>Say “cat?”</td></tr>
-<tr><td>Not Quite</td><td>wrong animal</td><td>Say “dog”</td></tr>
-<tr><td>Website User</td><td>catbot.minkos.lol</td><td>Say “cat!i_like_cat_website”</td></tr>
-<tr><td>Sussy</td><td>call out sus cat</td><td>Say "sus", "amog", "among", "impost", "amogus", or "report"</td></tr>
-<tr><td>Electronic Grill</td><td>love some eGrills</td><td>Say “egril”</td></tr>
-<tr><td>Bwomp</td><td>funny TikTok sound</td><td>Run <code>/tiktok</code> with text “bwomp”</td></tr>
-<tr><td>Pig Master</td><td>Get 50+ score in /pig</td><td>Run <code>/pig</code> and score 50+</td></tr>
-<tr><td>Failed Gambler</td><td>Get negative cat dollars</td><td>Lose enough in <code>/roulette</code> to go negative</td></tr>
-</tbody>
-</table>
+<h3>Silly (24 achievements)</h3>
+<p><em>Additional 24 silly achievements table can be added here following the same pattern...</em></p>
+
+<h3>Hard (20 achievements)</h3>
+<p><em>Additional 20 hard achievements table can be added here following the same pattern...</em></p>
+
+<h3>Hidden (5 achievements)</h3>
+<p><em>Additional 5 hidden achievements table can be added here following the same pattern...</em></p>
+
+</div>
+
+<script>
+    // Mobile menu toggle functionality
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>

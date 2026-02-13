@@ -206,9 +206,164 @@
         .xp-table-wrapper table tr { display: table-row; }
         .xp-table-wrapper table td { display: table-cell; }
     }
-</style>
+    /* Header Navigation */
+header {
+    background: linear-gradient(135deg, #34495E 0%, #2C3E50 100%);
+    border-bottom: 3px solid var(--primary-color);
+    box-shadow: 0 5px 20px var(--shadow-dark);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+}
+
+/* Logo/Title */
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.header-logo:hover {
+    transform: scale(1.05);
+}
+
+.header-logo h1 {
+    font-family: 'Permanent Marker', cursive;
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.header-logo-emoji {
+    font-size: 1.8em;
+    display: inline-block;
+}
+
+/* Navigation Menu */
+nav {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95em;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Mobile Menu Toggle */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    color: var(--text-accent);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background-color: #2C3E50;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-bottom: 3px solid var(--primary-color);
+    }
+
+    nav.active {
+        max-height: 300px;
+    }
+
+    nav a {
+        padding: 15px 20px;
+        border-bottom: 1px solid #3A556B;
+        width: 100%;
+    }
+
+    nav a::after {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .header-logo h1 {
+        font-size: 1.4em;
+    }
+
+    .header-container {
+        min-height: 60px;
+    }
+}
+    </style>
 </head>
-<body>
+<header>
+    <body>
+
+    <div class="header-container">
+        <a href="/" class="header-logo">
+            <span class="header-logo-emoji">🐱</span>
+            <h1>Cattito Wiki</h1>
+        </a>
+        <nav id="navMenu">
+            <a href="/">Home</a>
+            <a href="/cat-types">Cat Types</a>
+            <a href="/achievements">Achievements</a>
+            <a href="/dark-market">Dark Market</a>
+            <a href="/commands">Commands</a>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+</header>
+
 
 <div class="container">
 

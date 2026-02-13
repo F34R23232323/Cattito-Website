@@ -1,159 +1,326 @@
-<style>
-    :root {
-        --primary-color: #FFC064;
-        --secondary-color: #6E593C;
-        --background-dark: #2C3E50;
-        --text-light: #ECF0F1;
-        --text-accent: #FFD97D;
-        --code-background: #34495E;
-        --shadow-dark: rgba(0, 0, 0, 0.4);
-        --border-radius: 12px;
-    }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gambling - Cattito Wiki</title>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FFC064;
+            --secondary-color: #6E593C;
+            --background-dark: #2C3E50;
+            --text-light: #ECF0F1;
+            --text-accent: #FFD97D;
+            --code-background: #34495E;
+            --shadow-dark: rgba(0, 0, 0, 0.4);
+            --border-radius: 12px;
+        }
 
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: var(--background-dark);
-        color: var(--text-light);
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1.6;
+        }
 
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-    .documentation-section {
-        padding: 20px 0;
-    }
+        .documentation-section {
+            padding: 20px 0;
+        }
 
-    .section-title {
-        font-size: 2.5em;
-        text-align: center;
-        color: var(--primary-color);
-        font-family: 'Permanent Marker', cursive;
-        margin-bottom: 10px;
-    }
+        .section-title {
+            font-size: 2.5em;
+            text-align: center;
+            color: var(--primary-color);
+            font-family: 'Permanent Marker', cursive;
+            margin-bottom: 10px;
+        }
 
-    .subsection-title {
-        font-size: 1.8em;
-        color: var(--text-light);
-        margin-top: 35px;
-        margin-bottom: 15px;
-        border-bottom: 2px solid var(--secondary-color);
-        padding-bottom: 5px;
-        font-weight: 600;
-    }
+        .subsection-title {
+            font-size: 1.8em;
+            color: var(--text-light);
+            margin-top: 35px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 5px;
+            font-weight: 600;
+        }
 
-    .lead-text {
-        font-size: 1.1em;
-        color: #bdc3c7;
-        text-align: center;
-        max-width: 900px;
-        margin: 0 auto 25px;
-    }
+        .lead-text {
+            font-size: 1.1em;
+            color: #bdc3c7;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 25px;
+        }
 
-    .center-content {
-        text-align: center;
-        margin: 20px auto;
-        max-width: 900px;
-    }
+        .center-content {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 900px;
+        }
 
-    code {
-        background-color: var(--code-background);
-        padding: 2px 5px;
-        border-radius: 4px;
-        color: var(--text-accent);
-        font-family: monospace;
-    }
+        code {
+            background-color: var(--code-background);
+            padding: 2px 5px;
+            border-radius: 4px;
+            color: var(--text-accent);
+            font-family: monospace;
+        }
 
-    /* Data Table */
-    .data-table-container {
-        overflow-x: auto;
-        margin: 20px auto;
-        max-width: 100%;
-        border-radius: var(--border-radius);
-        box-shadow: 0 4px 10px var(--shadow-dark);
-    }
+        /* Data Table */
+        .data-table-container {
+            overflow-x: auto;
+            margin: 20px auto;
+            max-width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 10px var(--shadow-dark);
+        }
 
-    .data-table {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: #34495E;
-        min-width: 600px;
-    }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #34495E;
+            min-width: 600px;
+        }
 
-    .data-table th, .data-table td {
-        padding: 12px 15px;
-        text-align: center;
-        border: none;
-    }
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border: none;
+        }
 
-    .data-table th {
-        background-color: var(--secondary-color);
-        color: var(--primary-color);
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 0.9em;
-    }
+        .data-table th {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9em;
+        }
 
-    .data-table tbody tr {
-        border-bottom: 1px solid #4A6572;
-    }
+        .data-table tbody tr {
+            border-bottom: 1px solid #4A6572;
+        }
 
-    .data-table tbody tr:nth-child(even) {
-        background-color: #394d63;
-    }
+        .data-table tbody tr:nth-child(even) {
+            background-color: #394d63;
+        }
 
-    .data-table tbody tr:hover {
-        background-color: #4A6572;
-    }
+        .data-table tbody tr:hover {
+            background-color: #4A6572;
+        }
 
-    .alert-info {
-        background-color: #5A7486;
-        border-left: 5px solid var(--text-accent);
-        padding: 15px;
-        border-radius: var(--border-radius);
-        margin: 25px auto;
-        max-width: 900px;
-        font-weight: 500;
-    }
+        .alert-info {
+            background-color: #5A7486;
+            border-left: 5px solid var(--text-accent);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin: 25px auto;
+            max-width: 900px;
+            font-weight: 500;
+        }
 
-    /* Lists */
-    .dialogue-list, .trivia-list {
-        list-style: none;
-        padding-left: 0;
-        max-width: 900px;
-        margin: 20px auto;
-    }
+        /* Lists */
+        .dialogue-list, .trivia-list {
+            list-style: none;
+            padding-left: 0;
+            max-width: 900px;
+            margin: 20px auto;
+        }
 
-    .dialogue-list li, .trivia-list li {
-        background-color: #34495E;
-        margin-bottom: 10px;
-        padding: 12px 15px;
-        border-radius: 6px;
-        border-left: 4px solid var(--primary-color);
-        font-size: 1.05em;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    }
+        .dialogue-list li, .trivia-list li {
+            background-color: #34495E;
+            margin-bottom: 10px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border-left: 4px solid var(--primary-color);
+            font-size: 1.05em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
 
-    .dialogue-list strong {
-        color: var(--text-accent);
-    }
+        .dialogue-list strong {
+            color: var(--text-accent);
+        }
 
-    .trivia-list li span {
-        font-weight: 700;
-        color: var(--text-accent);
-        margin-right: 5px;
-    }
+        .trivia-list li span {
+            font-weight: 700;
+            color: var(--text-accent);
+            margin-right: 5px;
+        }
 
-    img {
-        border-radius: 8px;
-        box-shadow: 0 4px 10px var(--shadow-dark);
-        max-width: 100%;
-        height: auto;
-    }
+        img {
+            border-radius: 8px;
+            box-shadow: 0 4px 10px var(--shadow-dark);
+            max-width: 100%;
+            height: auto;
+        }
 
-</style>
+        /* Header Navigation */
+        header {
+            background: linear-gradient(135deg, #34495E 0%, #2C3E50 100%);
+            border-bottom: 3px solid var(--primary-color);
+            box-shadow: 0 5px 20px var(--shadow-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px;
+        }
+
+        /* Logo/Title */
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .header-logo:hover {
+            transform: scale(1.05);
+        }
+
+        .header-logo h1 {
+            font-family: 'Permanent Marker', cursive;
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin: 0;
+            border: none;
+            padding: 0;
+        }
+
+        .header-logo-emoji {
+            font-size: 1.8em;
+            display: inline-block;
+        }
+
+        /* Navigation Menu */
+        nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95em;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            color: var(--text-accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: #2C3E50;
+                gap: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                border-bottom: 3px solid var(--primary-color);
+            }
+
+            nav.active {
+                max-height: 300px;
+            }
+
+            nav a {
+                padding: 15px 20px;
+                border-bottom: 1px solid #3A556B;
+                width: 100%;
+            }
+
+            nav a::after {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .header-logo h1 {
+                font-size: 1.4em;
+            }
+
+            .header-container {
+                min-height: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="header-container">
+        <a href="/" class="header-logo">
+            <span class="header-logo-emoji">🐱</span>
+            <h1>Cattito Wiki</h1>
+        </a>
+        <nav id="navMenu">
+            <a href="/">Home</a>
+            <a href="/cat-types">Cat Types</a>
+            <a href="/achievements">Achievements</a>
+            <a href="/dark-market">Dark Market</a>
+            <a href="/commands">Commands</a>
+        </nav>
+        <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+</header>
 
 <div class="container documentation-section">
     <h2 class="section-title">🎰 Gambling</h2>
@@ -196,7 +363,7 @@
         <code>/slots</code> is free to play. Press <em>Spin</em> to try your luck:<br>
         • Get three identical emojis on the middle row to <strong>win</strong>.<br>
         • Hit <strong>777</strong> on the middle row for a <strong>big win</strong>!<br>
-        Slots don’t use or reward cats — it’s pure thrill.
+        Slots don't use or reward cats — it's pure thrill.
     </p>
     <ul class="dialogue-list">
         <li>Chance to <em>win</em> = 1/36</li>
@@ -301,10 +468,31 @@
     <!-- Trivia -->
     <h3 class="subsection-title">💡 Gambling Trivia</h3>
     <ul class="trivia-list">
-        <li><span>The Catsino:</span> Added on 24 Feb 2024 (originally named "The Casino"). If you lack cats, it mocks you and gives the “Broke” achievement.</li>
+        <li><span>The Catsino:</span> Added on 24 Feb 2024 (originally named "The Casino"). If you lack cats, it mocks you and gives the "Broke" achievement.</li>
         <li><span>Slots:</span> Added on 28 Nov 2024. Columns now stop in random order. Middle row is highlighted to clarify wins.</li>
         <li><span>Catsino Price:</span> Changed from 5 Epic → 5 Fine cats on 31 Mar 2025.</li>
         <li><span>Gambling Locks:</span> Are now server-wide to prevent being kicked for gambling in another server.</li>
         <li><span>Roulette:</span> Added on 25 Aug 2025.</li>
     </ul>
 </div>
+
+<script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>
